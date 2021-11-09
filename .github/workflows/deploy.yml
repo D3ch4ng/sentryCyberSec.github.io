@@ -2,8 +2,7 @@ name: about-build
 
 on:
   push:
-    branches:
-      - 'about'
+    branches: [main, about]
 
 jobs:
   about-build:
