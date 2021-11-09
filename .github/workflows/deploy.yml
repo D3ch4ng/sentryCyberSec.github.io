@@ -36,7 +36,7 @@ jobs:
       if: steps.cache.outputs.cache-hit != 'true'
       run: bundle install --jobs=4 --retry=3
     - name: Run jekyll-build
-      run: bundle config set --local path 'vendor/bundle' && bundle list|grep concurrent && bundle exec jekyll build --trace
+      run: bundle config set --local path 'vendor/bundle' && bundle list && bundle exec jekyll build --trace
     - name: Simple deploy with git
       uses: JamesIves/github-pages-deploy-action@releases/v3
       with: # optional
