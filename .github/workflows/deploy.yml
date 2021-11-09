@@ -40,9 +40,7 @@ jobs:
     - name: Simple deploy with git
       uses: JamesIves/github-pages-deploy-action@releases/v3
       with: # optional
-        git-user: ${{ secrets.Git_USERNAME}}
-        git-email: ${{ secrets.Git_EMAIL }}
-        git-base-folder: '_site'
         commit-message: '<auto:> ABOUT pages build/deploy by github action.'
-        BRANCH: 'gh-pages'
-        FOLDER: public
+        branch: 'gh-pages'
+        folder: '_site'
+        target-folder: 'about'
