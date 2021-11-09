@@ -6,7 +6,7 @@ on:
       - 'about'
 
 jobs:
-  build:
+  about-build:
 
     runs-on: ubuntu-latest
     env:
@@ -34,13 +34,13 @@ jobs:
       run: sed -i "/^source/c source 'https://rubygems.org'" Gemfile  && ruby -v && bundle -v
     - name: Install dependencies
       if: steps.cache.outputs.cache-hit != 'true'
-      run: bundle install --retry=3 
+      run: bundle install --jobs=4 --retry=3
     - name: Run jekyll-build
-      run: bundle config set --local path 'vendor/bundle' && ruby -v && bundle -v && bundle exec jekyll -v&& bundle exec jekyll build --trace
+      run: bundle config set --local path 'vendor/bundle' && bundle list|grep concurrent && bundle exec jekyll build --trace
     - name: Simple deploy with git
       uses: JamesIves/github-pages-deploy-action@releases/v3
       with: # optional
         commit-message: '<auto:> ABOUT pages build/deploy by github action.'
-        branch: 'gh-pages'
         folder: '_site'
+        branch: 'gh-pages'
         target-folder: 'about'

