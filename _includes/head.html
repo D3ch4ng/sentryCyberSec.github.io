@@ -1,83 +1,90 @@
 <head>
-<meta charset="utf-8">
+<head>
+<meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="{{ site.about  }}">
-{% if site.google_verify %}
-    <meta name="google-site-verification" content="{{ site.google_verify }}">
-{% endif %}
-<link rel="shortcut icon" href="{{ "/assets/img/favicon.png" | prepend: site.baseurl }}">
-<link type="application/atom+xml" rel="alternate" href="{{ "/feed.xml" | prepend: site.baseurl }}" title="{{ site.title }}" />
+<meta name="description" content="{{ site.title }}，这是一个与哨兵安全相关的简述。">
+<meta name="keywords" content="网络安全,哨兵安全,Cyber Security,Open Source">
+<meta name="author" content="Sentry Security">
+<link rel="shortcut icon" href="/static/img/favicon.png">
+<title>{% if page.mirrorid %} {{ page.mirrorid }} {% elsif page.title %} {{ page.title }} {% endif %}{% if include.cattitle %} {{ include.cattitle }} {% endif %}{% if (page.title || include.cattitle) %}{{" "}}{% endif %}{{ site.title }}{% if site.operator %} | {{ site.operator }}{% endif %}</title>
+<!--<base target="_blank" />-->
+<link rel="stylesheet" href="/static/css/bootstrap.css">
+<link rel="stylesheet" href="/static/css/bootstrap-select.min.css">
+<link rel="stylesheet" href="/static/css/font-awesome.min.css" >
+<link rel="stylesheet" href="/static/css/spinkit.css">
+<link rel="stylesheet" href="/static/css/style.css">
+<link rel="stylesheet" type="text/css" href="/static/css/pace-minimal.css">
 
-{% capture page_title %}{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}{% endcapture %}
+<script src="/static/js/jquery.min.js"></script>
+<!--jquery sticky js source files add-->
+<script src="/static/js/jquery_lazyload/1.9.7/jquery.lazyload.min.js"></script>
+<script type="text/javascript" src="/static/js/jquery.sticky/1.0.4/jquery.sticky.js"></script>
+<!--jquery sticky js source files add stop-->
+<script src="/static/js/bootstrap.min.js"></script>
+<script src="/static/js/bootstrap-select.min.js"></script>
+<script src="/static/js/pace.min.js"></script>
 
-<!-- Open Graph metadata -->
-<meta property="og:type" content="website" />
-<meta property="og:title" content="{{ page_title }}" />
-<meta property="og:description" content="{{ site.about  }}" />
-<meta property="og:image" content="{{ site.url }}{{ site.baseurl }}/assets/img/logo-share.png" /> <!-- WeChat requires that thumbnail image is larger than 300x300 -->
-<meta property="og:url" content="{{ site.url }}{{ site.baseurl }}{{ page.url }}" />
-<title>{% if page.mirrorid %} {{ page.mirrorid }} |{% elsif page.title %} {{ page.title }} |{% endif %}{% if include.cattitle %} {{ include.cattitle }} |{% endif %}{% if (page.title || include.cattitle) %}{{" "}}{% endif %}{{ site.title }}{% if site.brand %} | {{ site.brand }}{% endif %}</title>
-
-<link rel="stylesheet" type="text/css" href="/assets/css/pace-minimal.css">
-<script src="/assets/js/pace.min.js"></script>
-
-
-<!-- Bootstrap core CSS -->
-<link href="{{ "/assets/css/bootstrap.css" | prepend: site.baseurl }}" rel="stylesheet">
-<!-- Custom styles for this template -->
-<link href="{{ "/assets/css/style.css" | prepend: site.baseurl }}" rel="stylesheet">
-<link href="{{ "/assets/css/font-awesome.min.css" | prepend: site.baseurl }}" rel="stylesheet">
-<link href="{{ "/assets/css/font-awesome-v4-shims.min.css" | prepend: site.baseurl }}" rel="stylesheet">
-<link rel="stylesheet" href="/assets/css/404-style.css">
-
-
-<script src="{{ "/assets/js/jquery.min.js" | prepend: site.baseurl }}"></script>
-<script src="{{ "/assets/js/bootstrap.min.js" | prepend: site.baseurl }}"></script>
-
-
+<!--start-->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+        inlineMath: [['$$','$$']]
+      }
+    });
+  </script>
+<script src="/static/js/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+<!--https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js shuxue gongshi. stop-->
+{% unless page.legacy %}
+<script src="/static/js/vue.min.js"></script>
+<script src="/static/js/timeago.min.js"></script>
+{% endunless %}
+<script src="/static/js/markup.min.js"></script>
+<script src="/static/js/webfont.js"></script>
+<script src="/static/js/thuhidden.js"></script>
 {% if page.legacy %}
-    <style>
-        .container {
-            width: 85%;
-        }
-        .container > .navbar-header {
-            margin-right: 0;
-            margin-left: 0;
-        }
-        .navbar-nav {
-            float: left;
-            margin: 0;
-        }
-        .navbar-nav > li {
-            float: left;
-        }
-        .navbar-nav > li > a {
-            padding-top: 15px;
-            padding-bottom: 15px;
-        }
-        .navbar-nav.navbar-right:last-child {
-            margin-right: -15px;
-        }
-        .navbar-left {
-            float: left !important;
-        }
-        .navbar-right {
-            float: right !important;
-        }
-        .navbar-header:after {
-            clear: none;
-        }
-        a.navbar-brand {
-            width: 20em;
-        }
-        <!--[if lte IE 7]-->
-        .col-xs-1,.col-xs-2,.col-xs-3,.col-xs-4,.col-xs-5,.col-xs-6,.col-xs-7,.col-xs-8,.col-xs-9,
-        .col-xs-10,.col-xs-11,.col-xs-12 {
-            padding: 0px;
-        }
-        <!--[endif]-->
+<style>
+
+.container {
+	width: 85%;
+}
+.container > .navbar-header {
+	margin-right: 0;
+	margin-left: 0;
+}
+.navbar-nav {
+	float: left;
+	margin: 0;
+}
+.navbar-nav > li {
+	float: left;
+}
+.navbar-nav > li > a {
+	padding-top: 15px;
+	padding-bottom: 15px;
+}
+.navbar-nav.navbar-right:last-child {
+	margin-right: -15px;
+}
+.navbar-left {
+	float: left !important;
+}
+.navbar-right {
+	float: right !important;
+}
+.navbar-header:after {
+	clear: none;
+}
+a.navbar-brand {
+	width: 20em;
+}
+<!--[if lte IE 7]-->
+.col-xs-1,.col-xs-2,.col-xs-3,.col-xs-4,.col-xs-5,.col-xs-6,.col-xs-7,.col-xs-8,.col-xs-9,
+.col-xs-10,.col-xs-11,.col-xs-12 {
+	padding: 0px;
+}
+<!--[endif]-->
 </style>
 {% endif %}
-
 </head>

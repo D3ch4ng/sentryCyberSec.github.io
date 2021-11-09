@@ -1,13 +1,8 @@
-# SENTRYLAB WWW 主页
+# SENTRYLAB ABOUT 主页
 
 ![Jekyll Build & Deploy](https://github.com/tuna/tuna.moe/workflows/Jekyll%20Build%20&%20Deploy/badge.svg)
 
-Source code for [www-sentrylab-web](https://www.sentrylab.cn/).
-
-- *Project Log:*
-    - 2021年 5月10日 星期一 10时01分01秒 CST ：
-        - `_inculde/footer.html`新增访客统计；
-
+Source code for [about-sentrylab-web](https://about.sentrylab.cn/).
 
 ## 运行 Demo
 
@@ -66,4 +61,6 @@ jekyll build
 仅此一篇即可编写出漂亮的一篇博客
 
 ---
+
 以上。
+

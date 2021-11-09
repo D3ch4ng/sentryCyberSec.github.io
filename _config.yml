@@ -1,16 +1,38 @@
-### GENERAL SETTINGS ###
+# Welcome to Jekyll!
+#
+# This config file is meant for settings that affect your whole blog, values
+# which you are expected to set up once and rarely need to edit after that.
+# For technical reasons, this file is *NOT* reloaded automatically when you use
+# 'jekyll serve'. If you change this file, please restart the server process.
 
 # Site settings
-title: © 哨兵
+# school: 清华大学
+#urlv4: "https://mirrors4.tuna.tsinghua.edu.cn"
+#urlv6: "https://mirrors6.tuna.tsinghua.edu.cn"
+#aosp: "aosp.tuna.tsinghua.edu.cn"
+#arch_archive: "arch-archive.tuna.tsinghua.edu.cn"
+#aur: "aur.tuna.tsinghua.edu.cn"
+#pypi: "pypi.tuna.tsinghua.edu.cn"
+title: © 关于哨兵
 brand: Sentry Security
-description: 哨兵安全实验室
-baseurl: "" #important: start with /
+operator: 哨兵安全实验室
+logo: true
+meow_404: true
+issue_tag: tuna
+##
+# issue: true
+# backtime: Fri, 23 Jul 2021 14:55:36 +0800
+# issueReason: 918
+##
+baseurl: "" # the subpath of your site, e.g. /blog
+permalink: "/:categories/:title/"
 url: "https://www.sentrylab.cn"
-# option.
-githubAccess: "https://github.com/Bin4xin"
-# repos:
-githubIO: "https://bin4xin.github.io"
-giteeIO: "https://bin4xin.gitee.io"
+hostname: "about.sentrylab.cn"
+homelink: "https://www.sentrylab.cn"
+hide_navbar: false
+hide_download: false
+hide_server_status: false
+
 # Build settings
 highlighter: rouge
 markdown: kramdown
@@ -18,34 +40,18 @@ kramdown:
     input: GFM
     hard_wrap: false
 
-permalink: "/:categories/:year/:title/"
-
-excerpt_separator: <!--more--> #use this in posts to define how long the excerpt of the post (that is shown on the Blog page) is
-
-plugins:
-  - jekyll-toc
 
 sass:
-    sass_dir: assets/css
-future: true
-meow_404: true
+    sass_dir: static/css
 
-# Short text about your company. Shown in footer on every page and also separately on Home and Contact page.
-about: "本站由哨兵安全实验室支持创办"
+#gems:
+plugins:
+    - jekyll-babel
+    - jekyll-sitemap
+    - jekyll-toc
 
-include: ['_pages']
+babel_js_extensions: 'es6'
 
-# jekyll-archives:
-#   enabled: [categories]
-#   layout:
-#     category: category
-#   permalink:
-#     category: /categories/:name/
-jekyll-archives:
-  enabled: [categories, tags]
-  layouts:
-    category: category
-    tag: tag
-  permalinks:
-    tag: /tags/:name/
-    category: /categories/:name/
+exclude: [Gemfile, Gemfile.lock, README.md, gen_robot.sh, vendor, geninfo/, gen_robot.sh, gen_desc.py, Dockerfile*]
+
+# vim: ts=2 sts=2 sw=2 expandtab
